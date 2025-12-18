@@ -1,4 +1,5 @@
-public interface DynamicPriceRecordRepository extends
-JpaRepository<DynamicPriceRecord, Long>{
-    List<DynamicPriceRecord> findByEvent
+public interface PricingRuleRepository extends
+JpaRepository<PricingRule, Long>{
+    boolean existsByRuleCode(String ruleCode);
+    List<PricingRule> findByEventId(Long eventId);
 }

@@ -76,6 +76,15 @@
 						<groupId>org.apache.maven.surefire</groupId>
 						<artifactId>surefire-testng</artifactId>
 						<version>3.2.5</version>
+						<build>
+  <plugins>
+    <plugin>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-maven-plugin</artifactId>
+    </plugin>
+  </plugins>
+</build>
+
 					</dependency>
 				</dependencies>
 			</plugin>

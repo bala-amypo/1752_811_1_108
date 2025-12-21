@@ -1,4 +1,6 @@
 @Service
+public class DynamicPricingEngineServiceImpl {
+
 public class DynamicPricingEngineServiceImpl implements DynamicPricingEngineService {
 
     private final EventRecordRepository eventRepo;
@@ -87,4 +89,4 @@ public class DynamicPricingEngineServiceImpl implements DynamicPricingEngineServ
     public List<DynamicPriceRecord> getAllComputedPrices() {
         return priceRepo.findAll();
     }
-}
+}}

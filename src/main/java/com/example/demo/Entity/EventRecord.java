@@ -1,4 +1,4 @@
-package com.example.demo.model;
+package com.example.demo.entity;
 
 import jakarta.persistence.*;
 
@@ -9,12 +9,9 @@ public class EventRecord {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String eventCode;
-    private double basePrice;
-    private boolean active;
+    private String eventName;
 
-    public String getEventCode() { return eventCode; }
-    public double getBasePrice() { return basePrice; }
-    public boolean isActive() { return active; }
-    public void setActive(boolean active) { this.active = active; }
+    private double basePrice;
+
+    // getters & setters
 }

@@ -1,13 +1,9 @@
-package com.example.demo;
+spring.datasource.url=jdbc:mysql://localhost:3306/dynamic_pricing
+spring.datasource.username=root
+spring.datasource.password=root
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
 
-@SpringBootApplication
-public class DemoApplication {
-
-	public static void main(String[] args) {
-		SpringApplication.run(DemoApplication.class, args);
-	}
-
-}
+jwt.secret=secretkey
+jwt.expiration=86400000

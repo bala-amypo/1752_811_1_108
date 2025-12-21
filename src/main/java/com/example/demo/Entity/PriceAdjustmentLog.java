@@ -1,4 +1,10 @@
+package com.example.demo.model;
+
+import jakarta.persistence.*;
+import java.time.*;
+
 @Entity
+@Table(name = "price_adjustment_logs")
 public class PriceAdjustmentLog {
 
     @Id
@@ -6,11 +12,22 @@ public class PriceAdjustmentLog {
     private Long id;
 
     private Long eventId;
-    private double oldPrice;
-    private double newPrice;
+    private Double oldPrice;
+    private Double newPrice;
     private String reason;
+    private LocalDateTime changedAt;
 
-    private LocalDateTime changedAt = LocalDateTime.now();
+    @PrePersist
+    public void onCreate() {
+        changedAt = LocalDateTime.now();
+    }
 
-    // getters & setters
+    public PriceAdjustmentLog() {}
+
+    public PriceAdjustmentLog(Long eventId, Double oldPrice, Double newPrice, String reason) {
+        this.eventId = eventId;
+        this.oldPrice = oldPrice;
+        this.newPrice = newPrice;
+        this.reason = reason;
+    }
 }

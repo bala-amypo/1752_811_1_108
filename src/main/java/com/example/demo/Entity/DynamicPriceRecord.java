@@ -1,4 +1,10 @@
+package com.example.demo.model;
+
+import jakarta.persistence.*;
+import java.time.*;
+
 @Entity
+@Table(name = "dynamic_price_records")
 public class DynamicPriceRecord {
 
     @Id
@@ -6,10 +12,20 @@ public class DynamicPriceRecord {
     private Long id;
 
     private Long eventId;
-    private double computedPrice;
+    private Double computedPrice;
     private String appliedRuleCodes;
+    private LocalDateTime computedAt;
 
-    private LocalDateTime computedAt = LocalDateTime.now();
+    @PrePersist
+    public void onCreate() {
+        computedAt = LocalDateTime.now();
+    }
 
-    // getters & setters
+    public DynamicPriceRecord() {}
+
+    public DynamicPriceRecord(Long eventId, Double computedPrice, String appliedRuleCodes) {
+        this.eventId = eventId;
+        this.computedPrice = computedPrice;
+        this.appliedRuleCodes = appliedRuleCodes;
+    }
 }

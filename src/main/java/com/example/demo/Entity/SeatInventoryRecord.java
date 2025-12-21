@@ -1,4 +1,10 @@
+package com.example.demo.model;
+
+import jakarta.persistence.*;
+import java.time.*;
+
 @Entity
+@Table(name = "seat_inventory_records")
 public class SeatInventoryRecord {
 
     @Id
@@ -9,7 +15,21 @@ public class SeatInventoryRecord {
     private Integer totalSeats;
     private Integer remainingSeats;
 
-    private LocalDateTime updatedAt = LocalDateTime.now();
+    private LocalDateTime updatedAt;
 
+    @PrePersist
+    @PreUpdate
+    public void updateTime() {
+        updatedAt = LocalDateTime.now();
+    }
+
+    public SeatInventoryRecord() {}
+
+    public SeatInventoryRecord(Long id, Long eventId, Integer totalSeats, Integer remainingSeats) {
+        this.id = id;
+        this.eventId = eventId;
+        this.totalSeats = totalSeats;
+        this.remainingSeats = remainingSeats;
+    }
     // getters & setters
 }

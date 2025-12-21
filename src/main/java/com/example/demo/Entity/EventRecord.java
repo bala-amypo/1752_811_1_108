@@ -1,4 +1,10 @@
+package com.example.demo.model;
+
+import jakarta.persistence.*;
+import java.time.*;
+
 @Entity
+@Table(name = "event_records")
 public class EventRecord {
 
     @Id
@@ -11,11 +17,28 @@ public class EventRecord {
     private String eventName;
     private String venue;
     private LocalDate eventDate;
+    private Double basePrice;
+    private Boolean active = true;
 
-    private double basePrice;
-    private boolean active;
+    private LocalDateTime createdAt;
 
-    private LocalDateTime createdAt = LocalDateTime.now();
+    @PrePersist
+    public void onCreate() {
+        createdAt = LocalDateTime.now();
+    }
+
+    public EventRecord() {}
+
+    public EventRecord(Long id, String eventCode, String eventName, String venue,
+                       LocalDate eventDate, Double basePrice, Boolean active) {
+        this.id = id;
+        this.eventCode = eventCode;
+        this.eventName = eventName;
+        this.venue = venue;
+        this.eventDate = eventDate;
+        this.basePrice = basePrice;
+        this.active = active;
+    }
 
     // getters & setters
 }

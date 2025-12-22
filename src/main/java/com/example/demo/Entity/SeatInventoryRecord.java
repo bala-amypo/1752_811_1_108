@@ -3,6 +3,7 @@ package com.example.demo.model;
 import jakarta.persistence.*;
 
 @Entity
+@Table(name = "seat_inventory")
 public class SeatInventoryRecord {
 
     @Id
@@ -11,5 +12,19 @@ public class SeatInventoryRecord {
 
     private Integer availableSeats;
 
-    // getters & setters
+    public Long getId() {
+        return id;
+    }
+
+    public Integer getAvailableSeats() {
+        return availableSeats;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setAvailableSeats(Integer availableSeats) {
+        this.availableSeats = availableSeats;
+    }
 }

@@ -3,6 +3,7 @@ package com.example.demo.model;
 import jakarta.persistence.*;
 
 @Entity
+@Table(name = "dynamic_price_records")
 public class DynamicPriceRecord {
 
     @Id
@@ -11,5 +12,19 @@ public class DynamicPriceRecord {
 
     private Double price;
 
-    // getters & setters
+    public Long getId() {
+        return id;
+    }
+
+    public Double getPrice() {
+        return price;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setPrice(Double price) {
+        this.price = price;
+    }
 }

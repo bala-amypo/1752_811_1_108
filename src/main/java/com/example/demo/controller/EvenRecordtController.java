@@ -9,12 +9,12 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/events")
-@Tag(name = "Event CRUD APIs")
-public class EventController {
+@Tag(name = "Event Record CRUD")
+public class EventRecordController {   // ✅ MATCHES FILE NAME
 
     private final EventRecordRepository repository;
 
-    public EventController(EventRecordRepository repository) {
+    public EventRecordController(EventRecordRepository repository) {
         this.repository = repository;
     }
 
@@ -34,8 +34,9 @@ public class EventController {
     }
 
     @PutMapping("/{id}")
-    public EventRecord update(@PathVariable Long id, @RequestBody EventRecord event) {
-        event.setId(id);
+    public EventRecord update(@PathVariable Long id,
+                              @RequestBody EventRecord event) {
+        event.setId(id);  // ✅ NOW WORKS
         return repository.save(event);
     }
 

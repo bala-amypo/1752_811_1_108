@@ -20,8 +20,13 @@ public class EventRecord {
 
     public EventRecord() {}
 
+    // ✅ REQUIRED setters & getters
     public Long getId() {
         return id;
+    }
+
+    public void setId(Long id) {   // 🔥 FIXED
+        this.id = id;
     }
 
     public String getEventCode() {

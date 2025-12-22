@@ -1,6 +1,12 @@
-public interface DynamicPricingEngineService{
-    DynamicPriceRecord computeDynamicPrice(Long eventId);
+package com.example.demo.service;
+
+import java.util.List;
+
+import com.example.demo.entity.DynamicPriceRecord;
+
+public interface DynamicPricingEngineService {
+
+    DynamicPriceRecord calculatePrice(Long eventId);
+
     List<DynamicPriceRecord> getPriceHistory(Long eventId);
-    DynamicPriceRecord getLatestPrice(Long eventId);
-    List<DynamicPriceRecord>getAllComputedPrices();
 }

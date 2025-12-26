@@ -1,5 +1,6 @@
 package com.example.demo.service.impl;
 
+import com.example.demo.model.EventRecord;
 import com.example.demo.service.EventRecordService;
 import org.springframework.stereotype.Service;
 
@@ -7,8 +8,11 @@ import org.springframework.stereotype.Service;
 public class EventRecordServiceImpl implements EventRecordService {
 
     @Override
-    public void updateEventStatus(Long id, boolean active) {
-        // TODO: implement logic later
-        // currently empty to satisfy compiler
+    public EventRecord updateEventStatus(Long id, boolean active) {
+        // Minimal implementation to satisfy compiler
+        EventRecord event = new EventRecord();
+        event.setId(id);
+        event.setActive(active);
+        return event;
     }
 }

@@ -1,18 +1,29 @@
-<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
-<suite name="DynamicEventTicketPricingEngineSuite" verbose="1" parallel="none">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="DynamicEventTicketPricingEngineSuite" verbose="2" parallel="false">
+
+    <listeners>
+        <!-- Include your TestResultListener if needed -->
+        <listener class-name="com.example.demo.TestResultListener"/>
+    </listeners>
 
     <test name="DynamicEventTicketPricingEngineTests">
+        <groups>
+            <run>
+                <!-- Include all groups defined in your test class -->
+                <include name="servlet"/>
+                <include name="crud"/>
+                <include name="di"/>
+                <include name="hibernate"/>
+                <include name="jpa"/>
+                <include name="manyToMany"/>
+                <include name="security"/>
+                <include name="hql"/>
+            </run>
+        </groups>
+
         <classes>
-            <!-- Main test class -->
             <class name="com.example.demo.DynamicEventTicketPricingEngineApplicationTests"/>
-
-            <!-- Add other test classes here if needed -->
-            <!--
-            <class name="com.example.demo.OtherTestClass1"/>
-            <class name="com.example.demo.OtherTestClass2"/>
-            ...
-            -->
-
         </classes>
     </test>
 

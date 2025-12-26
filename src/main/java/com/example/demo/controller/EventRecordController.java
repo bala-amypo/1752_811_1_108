@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/events")
-@Tag(name = "Event Record CRUD")
-public class EventRecordController {   // ✅ MATCHES FILE NAME
+@RequestMapping("/events")
+@Tag(name = "Event API")
+public class EventRecordController {
 
     private final EventRecordRepository repository;
 
@@ -18,25 +18,13 @@ public class EventRecordController {   // ✅ MATCHES FILE NAME
         this.repository = repository;
     }
 
-    @PostMapping
-    public EventRecord create(@RequestBody EventRecord event) {
-        return repository.save(event);
-    }
-
     @GetMapping
     public List<EventRecord> getAll() {
         return repository.findAll();
     }
 
-    @GetMapping("/{id}")
-    public EventRecord getById(@PathVariable Long id) {
-        return repository.findById(id).orElse(null);
-    }
-
-    @PutMapping("/{id}")
-    public EventRecord update(@PathVariable Long id,
-                              @RequestBody EventRecord event) {
-        event.setId(id);  // ✅ NOW WORKS
+    @PostMapping
+    public EventRecord create(@RequestBody EventRecord event) {
         return repository.save(event);
     }
 

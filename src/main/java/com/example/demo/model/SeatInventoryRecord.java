@@ -4,8 +4,10 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 @Entity
+@Table(name = "seat_inventory")
 public class SeatInventoryRecord {
 
     @Id
@@ -16,7 +18,8 @@ public class SeatInventoryRecord {
     private int totalSeats;
     private int remainingSeats;
 
-    public SeatInventoryRecord() {}
+    public SeatInventoryRecord() {
+    }
 
     public SeatInventoryRecord(Long eventId, int totalSeats, int remainingSeats) {
         this.eventId = eventId;
@@ -24,7 +27,7 @@ public class SeatInventoryRecord {
         this.remainingSeats = remainingSeats;
     }
 
-    // Getters and Setters
+    // Getters and setters
     public Long getId() {
         return id;
     }

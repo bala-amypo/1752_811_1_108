@@ -6,5 +6,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.Optional;
 
 public interface EventRecordRepository extends JpaRepository<EventRecord, Long> {
-    Optional<EventRecord> findByEventName(String eventName); // Example query
+
+    boolean existsByEventCode(String eventCode);
+
+    Optional<EventRecord> findByEventCode(String eventCode);
 }

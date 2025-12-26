@@ -1,52 +1,37 @@
-package com.example.demo.service.impl;
+package com.example.demo.controller;
 
-import com.example.demo.model.EventRecord;
 import com.example.demo.model.SeatInventory;
-import com.example.demo.repository.SeatInventoryRepository;
 import com.example.demo.service.SeatInventoryService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
-@Service
-public class SeatInventoryServiceImpl implements SeatInventoryService {
+@RestController
+@RequestMapping("/api/seats")
+public class SeatInventoryController {
 
     @Autowired
-    private SeatInventoryRepository seatInventoryRepository;
+    private SeatInventoryService seatInventoryService;
 
-    @Override
-    public SeatInventory createSeatInventory(SeatInventory seatInventory) {
-        return seatInventoryRepository.save(seatInventory);
+    @PostMapping
+    public SeatInventory createSeat(@RequestBody SeatInventory seatInventory) {
+        return seatInventoryService.createSeatInventory(seatInventory);
     }
 
-    @Override
-    public SeatInventory updateSeatInventory(Long id, SeatInventory seatInventory) {
-        Optional<SeatInventory> existing = seatInventoryRepository.findById(id);
-        if (existing.isPresent()) {
-            SeatInventory updated = existing.get();
-            updated.setSeatType(seatInventory.getSeatType());
-            updated.setQuantity(seatInventory.getQuantity());
-            updated.setEvent(seatInventory.getEvent());
-            return seatInventoryRepository.save(updated);
-        }
-        return null;
+    @PutMapping("/{id}")
+    public SeatInventory updateSeat(@PathVariable Long id, @RequestBody SeatInventory seatInventory) {
+        return seatInventoryService.updateSeatInventory(id, seatInventory);
     }
 
-    @Override
-    public void deleteSeatInventory(Long id) {
-        seatInventoryRepository.deleteById(id);
+    @DeleteMapping("/{id}")
+    public void deleteSeat(@PathVariable Long id) {
+        seatInventoryService.deleteSeatInventory(id);
     }
 
-    @Override
-    public List<SeatInventory> getAllSeatsByEvent(EventRecord event) {
-        // Use event.getId() instead of getEventId()
-        return seatInventoryRepository.findByEventId(event.getId());
-    }
-
-    @Override
-    public Optional<SeatInventory> getSeatInventoryById(Long id) {
-        return seatInventoryRepository.findById(id);
+    @GetMapping("/event/{eventId}")
+    public List<SeatInventory> getSeatsByEvent(@PathVariable Long eventId) {
+        // You will need to implement a method in your service to fetch by eventId
+        return seatInventoryService.getAllSeatsByEventId(eventId);
     }
 }

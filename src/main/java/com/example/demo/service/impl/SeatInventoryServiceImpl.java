@@ -21,16 +21,13 @@ public class SeatInventoryServiceImpl {
     public int calculateAvailableSeats(EventRecord event) {
         SeatInventoryRecord inventory = inventoryRepo.findByEvent(event)
                 .orElseThrow(() -> new RuntimeException("Seat inventory not found for event: " + event.getEventId()));
-
         return Math.min(inventory.getRemainingSeats(), inventory.getTotalSeats());
     }
 
     public void updateRemainingSeats(EventRecord event, int seatsSold) {
         SeatInventoryRecord inventory = inventoryRepo.findByEvent(event)
                 .orElseThrow(() -> new RuntimeException("Seat inventory not found for event: " + event.getEventId()));
-
-        int updatedRemaining = inventory.getRemainingSeats() - seatsSold;
-        inventory.setRemainingSeats(updatedRemaining);
+        inventory.setRemainingSeats(inventory.getRemainingSeats() - seatsSold);
         inventoryRepo.save(inventory);
     }
 }

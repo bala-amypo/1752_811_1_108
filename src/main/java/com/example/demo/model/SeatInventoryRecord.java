@@ -26,13 +26,10 @@ public class SeatInventoryRecord {
 
     // Getters & Setters
     public Long getId() { return id; }
-
     public EventRecord getEvent() { return event; }
     public void setEvent(EventRecord event) { this.event = event; }
-
     public int getTotalSeats() { return totalSeats; }
     public void setTotalSeats(int totalSeats) { this.totalSeats = totalSeats; }
-
     public int getRemainingSeats() { return remainingSeats; }
     public void setRemainingSeats(int remainingSeats) { this.remainingSeats = remainingSeats; }
 }

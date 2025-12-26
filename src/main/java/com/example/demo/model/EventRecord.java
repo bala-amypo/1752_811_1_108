@@ -1,6 +1,9 @@
 package com.example.demo.model;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
 @Entity
 public class EventRecord {
@@ -18,7 +21,8 @@ public class EventRecord {
     // Constructors
     public EventRecord() {}
 
-    public EventRecord(String eventCode, String eventName, String venue, boolean active, double basePrice) {
+    public EventRecord(Long id, String eventCode, String eventName, String venue, boolean active, double basePrice) {
+        this.id = id;
         this.eventCode = eventCode;
         this.eventName = eventName;
         this.venue = venue;

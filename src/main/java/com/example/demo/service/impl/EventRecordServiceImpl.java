@@ -2,13 +2,14 @@ package com.example.demo.service.impl;
 
 import com.example.demo.model.EventRecord;
 import com.example.demo.repository.EventRecordRepository;
+import com.example.demo.service.EventRecordService;
 import org.springframework.stereotype.Service;
 
-import java.util.List;   // Needed for List
-import java.util.Optional; // Needed for Optional
+import java.util.List;
+import java.util.Optional;
 
 @Service
-public class EventRecordServiceImpl {
+public class EventRecordServiceImpl implements EventRecordService {
 
     private final EventRecordRepository eventRecordRepository;
 
@@ -16,36 +17,36 @@ public class EventRecordServiceImpl {
         this.eventRecordRepository = eventRecordRepository;
     }
 
-    // Create a new event
+    @Override
     public EventRecord createEvent(EventRecord event) {
-        // You can set defaults here if needed, e.g., active = true
-        event.setActive(true);
         return eventRecordRepository.save(event);
     }
 
-    // Update an existing event
-    public EventRecord updateEvent(Long id, EventRecord updatedEvent) {
-        Optional<EventRecord> optionalEvent = eventRecordRepository.findById(id);
-        if (optionalEvent.isPresent()) {
-            EventRecord event = optionalEvent.get();
-            event.setName(updatedEvent.getName());
-            event.setActive(updatedEvent.isActive());
-            return eventRecordRepository.save(event);
-        }
-        return null; // or throw an exception
-    }
-
-    // Get a single event by ID
+    @Override
     public Optional<EventRecord> getEventById(Long id) {
         return eventRecordRepository.findById(id);
     }
 
-    // Get all events
+    @Override
     public List<EventRecord> getAllEvents() {
         return eventRecordRepository.findAll();
     }
 
-    // Delete an event
+    @Override
+    public EventRecord updateEvent(Long id, EventRecord updatedEvent) {
+        return eventRecordRepository.findById(id)
+                .map(event -> {
+                    event.setEventName(updatedEvent.getEventName());
+                    event.setEventCode(updatedEvent.getEventCode());
+                    event.setVenue(updatedEvent.getVenue());
+                    event.setActive(updatedEvent.isActive());
+                    event.setBasePrice(updatedEvent.getBasePrice());
+                    return eventRecordRepository.save(event);
+                })
+                .orElseThrow(() -> new RuntimeException("Event not found with id: " + id));
+    }
+
+    @Override
     public void deleteEvent(Long id) {
         eventRecordRepository.deleteById(id);
     }

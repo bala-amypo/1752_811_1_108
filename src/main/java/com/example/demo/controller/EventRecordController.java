@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import com.example.demo.model.EventRecord;
 import com.example.demo.service.EventRecordService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,11 +12,8 @@ import java.util.List;
 @RequestMapping("/api/events")
 public class EventRecordController {
 
-    private final EventRecordService eventService;
-
-    public EventRecordController(EventRecordService eventService) {
-        this.eventService = eventService;
-    }
+    @Autowired
+    private EventRecordService eventService;
 
     @PostMapping
     public ResponseEntity<EventRecord> createEvent(@RequestBody EventRecord event) {
@@ -23,11 +21,10 @@ public class EventRecordController {
         return ResponseEntity.ok(savedEvent);
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<EventRecord> getEvent(@PathVariable Long id) {
-        return eventService.getEventById(id)
-                .map(ResponseEntity::ok)
-                .orElse(ResponseEntity.notFound().build());
+    @PutMapping("/{id}")
+    public ResponseEntity<EventRecord> updateEvent(@PathVariable Long id, @RequestBody EventRecord event) {
+        EventRecord updatedEvent = eventService.updateEvent(id, event);
+        return ResponseEntity.ok(updatedEvent);
     }
 
     @GetMapping
@@ -35,9 +32,11 @@ public class EventRecordController {
         return ResponseEntity.ok(eventService.getAllEvents());
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<EventRecord> updateEvent(@PathVariable Long id, @RequestBody EventRecord updatedEvent) {
-        return ResponseEntity.ok(eventService.updateEvent(id, updatedEvent));
+    @GetMapping("/{id}")
+    public ResponseEntity<EventRecord> getEventById(@PathVariable Long id) {
+        return eventService.getEventById(id)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
     }
 
     @DeleteMapping("/{id}")

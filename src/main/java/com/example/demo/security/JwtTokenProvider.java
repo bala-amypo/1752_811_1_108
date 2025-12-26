@@ -28,16 +28,16 @@ public class JwtTokenProvider {
     }
 
     public String getUsernameFromToken(String token) {
-        return Jwts.parser()            // Use parser() instead of parserBuilder()
+        return Jwts.parser()            // Old API
                 .setSigningKey(key)
-                .parseClaimsJws(token)
+                .parseClaimsJws(token)   // Returns Jws<Claims>
                 .getBody()
                 .getSubject();
     }
 
     public boolean validateToken(String token) {
         try {
-            Jwts.parser()                // Use parser() here as well
+            Jwts.parser()                // Old API
                 .setSigningKey(key)
                 .parseClaimsJws(token);
             return true;

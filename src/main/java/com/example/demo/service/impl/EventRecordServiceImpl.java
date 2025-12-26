@@ -22,9 +22,9 @@ public class EventRecordServiceImpl implements EventRecordService {
 
     @Override
     public EventRecord updateEvent(Long id, EventRecord eventRecord) {
-        Optional<EventRecord> existingEvent = eventRecordRepository.findById(id);
-        if (existingEvent.isPresent()) {
-            EventRecord e = existingEvent.get();
+        Optional<EventRecord> existing = eventRecordRepository.findById(id);
+        if (existing.isPresent()) {
+            EventRecord e = existing.get();
             e.setEventCode(eventRecord.getEventCode());
             e.setEventName(eventRecord.getEventName());
             e.setVenue(eventRecord.getVenue());

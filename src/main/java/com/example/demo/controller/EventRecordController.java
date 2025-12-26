@@ -17,19 +17,18 @@ public class EventRecordController {
 
     @PostMapping
     public ResponseEntity<EventRecord> createEvent(@RequestBody EventRecord event) {
-        EventRecord savedEvent = eventService.createEvent(event);
-        return ResponseEntity.ok(savedEvent);
+        return ResponseEntity.ok(eventService.createEvent(event));
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<EventRecord> updateEvent(@PathVariable Long id, @RequestBody EventRecord event) {
-        EventRecord updatedEvent = eventService.updateEvent(id, event);
-        return ResponseEntity.ok(updatedEvent);
+        return ResponseEntity.ok(eventService.updateEvent(id, event));
     }
 
-    @GetMapping
-    public ResponseEntity<List<EventRecord>> getAllEvents() {
-        return ResponseEntity.ok(eventService.getAllEvents());
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteEvent(@PathVariable Long id) {
+        eventService.deleteEvent(id);
+        return ResponseEntity.noContent().build();
     }
 
     @GetMapping("/{id}")
@@ -39,9 +38,8 @@ public class EventRecordController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteEvent(@PathVariable Long id) {
-        eventService.deleteEvent(id);
-        return ResponseEntity.noContent().build();
+    @GetMapping
+    public ResponseEntity<List<EventRecord>> getAllEvents() {
+        return ResponseEntity.ok(eventService.getAllEvents());
     }
 }

@@ -1,37 +1,35 @@
 package com.example.demo.controller;
 
 import com.example.demo.model.SeatInventory;
+import com.example.demo.model.EventRecord;
 import com.example.demo.service.SeatInventoryService;
+import com.example.demo.service.EventRecordService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/api/seats")
 public class SeatInventoryController {
 
+    private final SeatInventoryService seatService;
+    private final EventRecordService eventService;
+
     @Autowired
-    private SeatInventoryService seatInventoryService;
-
-    @PostMapping
-    public SeatInventory createSeat(@RequestBody SeatInventory seatInventory) {
-        return seatInventoryService.createSeatInventory(seatInventory);
+    public SeatInventoryController(SeatInventoryService seatService, EventRecordService eventService) {
+        this.seatService = seatService;
+        this.eventService = eventService;
     }
 
-    @PutMapping("/{id}")
-    public SeatInventory updateSeat(@PathVariable Long id, @RequestBody SeatInventory seatInventory) {
-        return seatInventoryService.updateSeatInventory(id, seatInventory);
+    @PostMapping("/{eventCode}")
+    public SeatInventory createInventory(@PathVariable String eventCode, @RequestBody SeatInventory inventory) {
+        EventRecord event = eventService.getEventByCode(eventCode);
+        inventory.setEvent(event);
+        return seatService.saveInventory(inventory);
     }
 
-    @DeleteMapping("/{id}")
-    public void deleteSeat(@PathVariable Long id) {
-        seatInventoryService.deleteSeatInventory(id);
-    }
-
-    @GetMapping("/event/{eventId}")
-    public List<SeatInventory> getSeatsByEvent(@PathVariable Long eventId) {
-        // You will need to implement a method in your service to fetch by eventId
-        return seatInventoryService.getAllSeatsByEventId(eventId);
+    @GetMapping("/{eventCode}")
+    public int getAvailableSeats(@PathVariable String eventCode) {
+        EventRecord event = eventService.getEventByCode(eventCode);
+        return seatService.calculateAvailableSeats(event);
     }
 }

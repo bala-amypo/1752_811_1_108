@@ -1,5 +1,17 @@
 package com.example.demo;
 
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class DynamicEventTicketPricingEngineApplication {
+
+    public static void main(String[] args) {
+        SpringApplication.run(DynamicEventTicketPricingEngineApplication.class, args);
+    }
+}
+package com.example.demo;
+
 import com.example.demo.service.DynamicPricingEngineService;
 import com.example.demo.service.EventRecordService;
 import com.example.demo.servlet.HelloServlet;

@@ -5,20 +5,10 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class EventRecordServiceImpl implements EventRecordService {
-    // implement methods if any
-}
 
-    private final EventRecordRepository repository;
-
-    public EventRecordServiceImpl(EventRecordRepository repository) {
-        this.repository = repository;
-    }
-
-    public boolean existsByEventCode(String code) {
-        return repository.existsByEventCode(code);
-    }
-
-    public Optional<EventRecord> findByEventCode(String code) {
-        return repository.findByEventCode(code);
+    @Override
+    public void updateEventStatus(Long id, boolean active) {
+        // TODO: implement logic later
+        // currently empty to satisfy compiler
     }
 }

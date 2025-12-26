@@ -1,9 +1,10 @@
 package com.example.demo.model;
 
 import jakarta.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "seat_inventory_records")
+@Table(name = "seat_inventory")
 public class SeatInventoryRecord {
 
     @Id
@@ -11,25 +12,36 @@ public class SeatInventoryRecord {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "event_id")
+    @JoinColumn(name = "event_id", nullable = false)
     private EventRecord event;
 
+    @Column(nullable = false)
     private int totalSeats;
 
+    @Column(nullable = false)
     private int remainingSeats;
 
-    // Constructors
+    @Column
+    private LocalDateTime createdAt;
+
+    @Column
+    private LocalDateTime updatedAt;
+
     public SeatInventoryRecord() {}
 
-    public SeatInventoryRecord(EventRecord event, int totalSeats) {
+    public SeatInventoryRecord(EventRecord event, int totalSeats, int remainingSeats) {
         this.event = event;
         this.totalSeats = totalSeats;
-        this.remainingSeats = totalSeats;
+        this.remainingSeats = remainingSeats;
     }
 
-    // Getters and setters
+    // Getters and Setters
     public Long getId() {
         return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public EventRecord getEvent() {
@@ -54,5 +66,24 @@ public class SeatInventoryRecord {
 
     public void setRemainingSeats(int remainingSeats) {
         this.remainingSeats = remainingSeats;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
+    }
+
+    @PrePersist
+    public void prePersist() {
+        createdAt = LocalDateTime.now();
+        updatedAt = createdAt;
+    }
+
+    @PreUpdate
+    public void preUpdate() {
+        updatedAt = LocalDateTime.now();
     }
 }

@@ -2,17 +2,16 @@ package com.example.demo.model;
 
 import jakarta.persistence.*;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "event_record")
+@Table(name = "event_records")
 public class EventRecord {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long eventId;
 
-    @Column(unique = true, nullable = false)
+    @Column(nullable = false, unique = true)
     private String eventCode;
 
     @Column(nullable = false)
@@ -22,26 +21,23 @@ public class EventRecord {
     private String venue;
 
     @Column(nullable = false)
-    private double basePrice;
-
-    private LocalDate eventDate;
-
     private boolean active;
 
-    private LocalDateTime createdAt;
+    @Column(nullable = false)
+    private double basePrice;
 
-    private LocalDateTime updatedAt;
+    @Column
+    private LocalDate eventDate;
 
-    // Constructors
     public EventRecord() {}
 
-    public EventRecord(String eventCode, String eventName, String venue, double basePrice, LocalDate eventDate, boolean active) {
+    public EventRecord(String eventCode, String eventName, String venue, boolean active, double basePrice, LocalDate eventDate) {
         this.eventCode = eventCode;
         this.eventName = eventName;
         this.venue = venue;
+        this.active = active;
         this.basePrice = basePrice;
         this.eventDate = eventDate;
-        this.active = active;
     }
 
     // Getters and Setters
@@ -77,6 +73,15 @@ public class EventRecord {
         this.venue = venue;
     }
 
+    // Boolean getter uses isActive() for proper Java conventions
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
+
     public double getBasePrice() {
         return basePrice;
     }
@@ -93,31 +98,11 @@ public class EventRecord {
         this.eventDate = eventDate;
     }
 
-    public boolean getActive() {
-        return active;
-    }
-
-    public void setActive(boolean active) {
-        this.active = active;
-    }
-
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
-    }
-
-    public LocalDateTime getUpdatedAt() {
-        return updatedAt;
-    }
-
-    // Lifecycle hooks
+    // Optional helper methods for JPA lifecycle
     @PrePersist
     public void prePersist() {
-        this.createdAt = LocalDateTime.now();
-        this.updatedAt = LocalDateTime.now();
-    }
-
-    @PreUpdate
-    public void preUpdate() {
-        this.updatedAt = LocalDateTime.now();
+        if (eventDate == null) {
+            eventDate = LocalDate.now();
+        }
     }
 }

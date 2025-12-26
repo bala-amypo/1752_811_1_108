@@ -1,39 +1,33 @@
 package com.example.demo.service.impl;
 
-import com.example.demo.exception.BadRequestException;
-import com.example.demo.exception.NotFoundException;
 import com.example.demo.model.SeatInventoryRecord;
-import com.example.demo.repository.EventRecordRepository;
 import com.example.demo.repository.SeatInventoryRecordRepository;
-import com.example.demo.service.SeatInventoryService;
+import org.springframework.stereotype.Service;
 
-public class SeatInventoryServiceImpl implements SeatInventoryService {
+@Service
+public class SeatInventoryServiceImpl {
 
     private final SeatInventoryRecordRepository inventoryRepo;
-    private final EventRecordRepository eventRepo;
 
-    public SeatInventoryServiceImpl(SeatInventoryRecordRepository inventoryRepo,
-                                    EventRecordRepository eventRepo) {
+    public SeatInventoryServiceImpl(SeatInventoryRecordRepository inventoryRepo) {
         this.inventoryRepo = inventoryRepo;
-        this.eventRepo = eventRepo;
     }
 
-    @Override
-    public SeatInventoryRecord createInventory(SeatInventoryRecord inventory) {
-
-        eventRepo.findById(inventory.getEventId())
-                .orElseThrow(() -> new NotFoundException("Event not found"));
-
-        if (inventory.getRemainingSeats() > inventory.getTotalSeats()) {
-            throw new BadRequestException("Remaining seats cannot exceed total seats");
-        }
-
-        return inventoryRepo.save(inventory);
+    public int calculateAvailableSeats(Long eventId) {
+        SeatInventoryRecord inventory = inventoryRepo.findByEventId(eventId)
+                .orElseThrow(() -> new RuntimeException("Seat inventory not found for event: " + eventId));
+        
+        // Example calculation
+        int remainingSeats = inventory.getRemainingSeats();
+        int totalSeats = inventory.getTotalSeats();
+        return remainingSeats > totalSeats ? totalSeats : remainingSeats;
     }
 
-    @Override
-    public SeatInventoryRecord getInventoryByEvent(Long eventId) {
-        return inventoryRepo.findByEventId(eventId)
-                .orElseThrow(() -> new NotFoundException("Seat inventory not found"));
+    public void updateRemainingSeats(Long eventId, int seatsSold) {
+        SeatInventoryRecord inventory = inventoryRepo.findByEventId(eventId)
+                .orElseThrow(() -> new RuntimeException("Seat inventory not found for event: " + eventId));
+        int updatedRemaining = inventory.getRemainingSeats() - seatsSold;
+        inventory.setRemainingSeats(updatedRemaining);
+        inventoryRepo.save(inventory);
     }
 }

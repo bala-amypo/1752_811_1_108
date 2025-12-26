@@ -9,6 +9,10 @@ import org.springframework.stereotype.Service;
 public class SeatInventoryServiceImpl {
 
     private final SeatInventoryRecordRepository inventoryRepo;
+    public SeatInventoryRecord saveInventory(SeatInventoryRecord inventory) {
+    return inventoryRepo.save(inventory);
+}
+
 
     public SeatInventoryServiceImpl(SeatInventoryRecordRepository inventoryRepo) {
         this.inventoryRepo = inventoryRepo;

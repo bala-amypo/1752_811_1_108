@@ -1,25 +1,50 @@
 package com.example.demo.model;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
 @Entity
-@Table(name = "event_record")
 public class EventRecord {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long eventId;
+    private Long id;
 
-    private String eventName;
-    private String location;
+    private String name;
+    private boolean active;
+
+    // Constructor
+    public EventRecord() {}
+
+    public EventRecord(String name, boolean active) {
+        this.name = name;
+        this.active = active;
+    }
 
     // Getters and Setters
-    public Long getEventId() { return eventId; }
-    public void setEventId(Long eventId) { this.eventId = eventId; }
+    public Long getId() {
+        return id;
+    }
 
-    public String getEventName() { return eventName; }
-    public void setEventName(String eventName) { this.eventName = eventName; }
+    public void setId(Long id) {       // <-- needed by your service
+        this.id = id;
+    }
 
-    public String getLocation() { return location; }
-    public void setLocation(String location) { this.location = location; }
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {  // <-- needed by your service
+        this.active = active;
+    }
 }

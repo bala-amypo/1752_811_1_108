@@ -3,65 +3,46 @@ package com.example.demo.security;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;
 import org.springframework.security.core.Authentication;
+import org.springframework.stereotype.Component;
 
 import java.security.Key;
 import java.util.Date;
-import java.util.Map;
 
+@Component
 public class JwtTokenProvider {
 
-    private final Key key;
-    private final long validityInMs;
-    private final boolean enabled;
+    private final Key key = Keys.secretKeyFor(SignatureAlgorithm.HS256);
+    private final long validityInMilliseconds = 3600000; // 1 hour
 
-    public JwtTokenProvider(String secret, long validityInMs, boolean enabled) {
-        this.key = Keys.hmacShaKeyFor(secret.getBytes());
-        this.validityInMs = validityInMs;
-        this.enabled = enabled;
-    }
-
-    public String generateToken(Authentication authentication,
-                                Long userId,
-                                String role) {
-
+    public String generateToken(Authentication authentication) {
+        String username = authentication.getName();
         Date now = new Date();
-        Date expiry = new Date(now.getTime() + validityInMs);
+        Date expiry = new Date(now.getTime() + validityInMilliseconds);
 
         return Jwts.builder()
-                .setSubject(authentication.getName())
-                .claim("userId", userId)
-                .claim("role", role)
-                .claim("email", authentication.getName())
+                .setSubject(username)
                 .setIssuedAt(now)
                 .setExpiration(expiry)
-                .signWith(key, SignatureAlgorithm.HS256)
+                .signWith(key)
                 .compact();
+    }
+
+    public String getUsernameFromToken(String token) {
+        return Jwts.parser()            // Use parser() instead of parserBuilder()
+                .setSigningKey(key)
+                .parseClaimsJws(token)
+                .getBody()
+                .getSubject();
     }
 
     public boolean validateToken(String token) {
         try {
-            if (!enabled) return false;
-            Jwts.parserBuilder()
-                    .setSigningKey(key)
-                    .build()
-                    .parseClaimsJws(token);
+            Jwts.parser()                // Use parser() here as well
+                .setSigningKey(key)
+                .parseClaimsJws(token);
             return true;
-        } catch (JwtException | IllegalArgumentException ex) {
+        } catch (JwtException | IllegalArgumentException e) {
             return false;
         }
-    }
-
-    public String getUsernameFromToken(String token) {
-    return (String) getAllClaims(token).get("sub");
-}
-
-
-    public Map<String, Object> getAllClaims(String token) {
-        Claims claims = Jwts.parserBuilder()
-                .setSigningKey(key)
-                .build()
-                .parseClaimsJws(token)
-                .getBody();
-        return claims;
     }
 }

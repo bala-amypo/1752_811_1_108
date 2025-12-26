@@ -1,11 +1,9 @@
 package com.example.demo.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
+@Table(name = "event_records")
 public class EventRecord {
 
     @Id
@@ -13,22 +11,23 @@ public class EventRecord {
     private Long id;
 
     private String name;
-    private boolean active;
 
-    // Constructor
+    private boolean active = true;
+
+    // Constructors
     public EventRecord() {}
 
-    public EventRecord(String name, boolean active) {
+    public EventRecord(String name) {
         this.name = name;
-        this.active = active;
+        this.active = true;
     }
 
-    // Getters and Setters
+    // Getters and setters
     public Long getId() {
         return id;
     }
 
-    public void setId(Long id) {       // <-- needed by your service
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -44,7 +43,7 @@ public class EventRecord {
         return active;
     }
 
-    public void setActive(boolean active) {  // <-- needed by your service
+    public void setActive(boolean active) {
         this.active = active;
     }
 }

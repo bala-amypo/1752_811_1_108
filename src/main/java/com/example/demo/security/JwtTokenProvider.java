@@ -52,8 +52,9 @@ public class JwtTokenProvider {
     }
 
     public String getUsernameFromToken(String token) {
-        return getAllClaims(token).getSubject();
-    }
+    return (String) getAllClaims(token).get("sub");
+}
+
 
     public Map<String, Object> getAllClaims(String token) {
         Claims claims = Jwts.parserBuilder()

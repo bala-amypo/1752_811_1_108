@@ -13,6 +13,10 @@ public class EventRecordServiceImpl {
     public EventRecordServiceImpl(EventRecordRepository eventRecordRepository) {
         this.eventRecordRepository = eventRecordRepository;
     }
+    public List<EventRecord> getAllEvents() {
+    return eventRecordRepository.findAll();
+}
+
 
     public EventRecord createEvent(String name) {
         EventRecord event = new EventRecord(name);

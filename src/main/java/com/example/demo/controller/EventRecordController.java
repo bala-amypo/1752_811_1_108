@@ -1,35 +1,34 @@
 package com.example.demo.controller;
 
 import com.example.demo.model.EventRecord;
-import com.example.demo.repository.EventRecordRepository;
-import io.swagger.v3.oas.annotations.tags.Tag;
+import com.example.demo.service.impl.EventRecordServiceImpl;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/events")
-@Tag(name = "Event API")
+@RequestMapping("/api/events")
 public class EventRecordController {
 
-    private final EventRecordRepository repository;
+    private final EventRecordServiceImpl eventService;
 
-    public EventRecordController(EventRecordRepository repository) {
-        this.repository = repository;
-    }
-
-    @GetMapping
-    public List<EventRecord> getAll() {
-        return repository.findAll();
+    public EventRecordController(EventRecordServiceImpl eventService) {
+        this.eventService = eventService;
     }
 
     @PostMapping
-    public EventRecord create(@RequestBody EventRecord event) {
-        return repository.save(event);
+    public EventRecord createEvent(@RequestParam String name) {
+        return eventService.createEvent(name);
     }
 
-    @DeleteMapping("/{id}")
-    public void delete(@PathVariable Long id) {
-        repository.deleteById(id);
+    @GetMapping("/{id}")
+    public EventRecord getEvent(@PathVariable Long id) {
+        return eventService.getActiveEventById(id);
+    }
+
+    @GetMapping
+    public List<EventRecord> getAllEvents() {
+        // Optional: fetch all events (for testing)
+        return eventService.getAllEvents();
     }
 }

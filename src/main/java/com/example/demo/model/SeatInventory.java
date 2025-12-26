@@ -10,51 +10,31 @@ public class SeatInventory {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Long eventId;
+    @ManyToOne
+    @JoinColumn(name = "event_id", nullable = false)
+    private EventRecord event;
 
-    private String seatNumber;
+    @Column(nullable = false)
+    private int totalSeats;
 
-    private boolean booked;
+    @Column(nullable = false)
+    private int remainingSeats;
 
     // Constructors
     public SeatInventory() {}
 
-    public SeatInventory(Long eventId, String seatNumber, boolean booked) {
-        this.eventId = eventId;
-        this.seatNumber = seatNumber;
-        this.booked = booked;
+    public SeatInventory(EventRecord event, int totalSeats, int remainingSeats) {
+        this.event = event;
+        this.totalSeats = totalSeats;
+        this.remainingSeats = remainingSeats;
     }
 
-    // Getters and setters
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Long getEventId() {
-        return eventId;
-    }
-
-    public void setEventId(Long eventId) {
-        this.eventId = eventId;
-    }
-
-    public String getSeatNumber() {
-        return seatNumber;
-    }
-
-    public void setSeatNumber(String seatNumber) {
-        this.seatNumber = seatNumber;
-    }
-
-    public boolean isBooked() {
-        return booked;
-    }
-
-    public void setBooked(boolean booked) {
-        this.booked = booked;
-    }
+    // Getters & Setters
+    public Long getId() { return id; }
+    public EventRecord getEvent() { return event; }
+    public void setEvent(EventRecord event) { this.event = event; }
+    public int getTotalSeats() { return totalSeats; }
+    public void setTotalSeats(int totalSeats) { this.totalSeats = totalSeats; }
+    public int getRemainingSeats() { return remainingSeats; }
+    public void setRemainingSeats(int remainingSeats) { this.remainingSeats = remainingSeats; }
 }

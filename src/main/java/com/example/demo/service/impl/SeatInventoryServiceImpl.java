@@ -1,41 +1,44 @@
 package com.example.demo.service.impl;
 
 import com.example.demo.model.SeatInventory;
+import com.example.demo.model.EventRecord;
 import com.example.demo.repository.SeatInventoryRepository;
 import com.example.demo.service.SeatInventoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 @Service
 public class SeatInventoryServiceImpl implements SeatInventoryService {
 
+    private final SeatInventoryRepository seatInventoryRepository;
+
     @Autowired
-    private SeatInventoryRepository seatInventoryRepository;
-
-    @Override
-    public SeatInventory createSeatInventory(SeatInventory seatInventory) {
-        return seatInventoryRepository.save(seatInventory);
+    public SeatInventoryServiceImpl(SeatInventoryRepository seatInventoryRepository) {
+        this.seatInventoryRepository = seatInventoryRepository;
     }
 
     @Override
-    public SeatInventory updateSeatInventory(Long id, SeatInventory seatInventory) {
-        SeatInventory existing = seatInventoryRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Seat not found"));
-        existing.setSeatNumber(seatInventory.getSeatNumber());
-        existing.setBooked(seatInventory.isBooked());
-        existing.setEventId(seatInventory.getEventId());
-        return seatInventoryRepository.save(existing);
+    public SeatInventory saveInventory(SeatInventory inventory) {
+        return seatInventoryRepository.save(inventory);
     }
 
     @Override
-    public void deleteSeatInventory(Long id) {
-        seatInventoryRepository.deleteById(id);
+    public int calculateAvailableSeats(EventRecord event) {
+        SeatInventory inventory = getInventoryByEvent(event);
+        return inventory != null ? inventory.getRemainingSeats() : 0;
     }
 
     @Override
-    public List<SeatInventory> getAllSeatsByEventId(Long eventId) {
-        return seatInventoryRepository.findByEventId(eventId);
+    public void updateRemainingSeats(EventRecord event, int remainingSeats) {
+        SeatInventory inventory = getInventoryByEvent(event);
+        if (inventory != null) {
+            inventory.setRemainingSeats(remainingSeats);
+            seatInventoryRepository.save(inventory);
+        }
+    }
+
+    @Override
+    public SeatInventory getInventoryByEvent(EventRecord event) {
+        return seatInventoryRepository.findByEvent(event).orElse(null);
     }
 }

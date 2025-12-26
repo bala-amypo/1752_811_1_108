@@ -3,43 +3,37 @@ package com.example.demo.controller;
 import com.example.demo.model.EventRecord;
 import com.example.demo.service.EventRecordService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController
 @RequestMapping("/api/events")
 public class EventRecordController {
 
+    private final EventRecordService eventService;
+
     @Autowired
-    private EventRecordService eventService;
+    public EventRecordController(EventRecordService eventService) {
+        this.eventService = eventService;
+    }
 
     @PostMapping
-    public ResponseEntity<EventRecord> createEvent(@RequestBody EventRecord event) {
-        return ResponseEntity.ok(eventService.createEvent(event));
+    public EventRecord createEvent(@RequestBody EventRecord event) {
+        return eventService.saveEvent(event);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<EventRecord> updateEvent(@PathVariable Long id, @RequestBody EventRecord event) {
-        return ResponseEntity.ok(eventService.updateEvent(id, event));
+    public EventRecord updateEvent(@PathVariable Long id, @RequestBody EventRecord event) {
+        return eventService.updateEvent(id, event);
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteEvent(@PathVariable Long id) {
-        eventService.deleteEvent(id);
-        return ResponseEntity.noContent().build();
-    }
-
-    @GetMapping("/{id}")
-    public ResponseEntity<EventRecord> getEventById(@PathVariable Long id) {
-        return eventService.getEventById(id)
-                .map(ResponseEntity::ok)
-                .orElse(ResponseEntity.notFound().build());
+    @GetMapping("/{eventCode}")
+    public EventRecord getEventByCode(@PathVariable String eventCode) {
+        return eventService.getEventByCode(eventCode);
     }
 
     @GetMapping
-    public ResponseEntity<List<EventRecord>> getAllEvents() {
-        return ResponseEntity.ok(eventService.getAllEvents());
+    public List<EventRecord> getAllEvents() {
+        return eventService.getAllEvents();
     }
 }

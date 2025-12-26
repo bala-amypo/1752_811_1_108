@@ -5,44 +5,39 @@ import com.example.demo.repository.EventRecordRepository;
 import com.example.demo.service.EventRecordService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class EventRecordServiceImpl implements EventRecordService {
 
+    private final EventRecordRepository eventRecordRepository;
+
     @Autowired
-    private EventRecordRepository eventRecordRepository;
-
-    @Override
-    public EventRecord createEvent(EventRecord eventRecord) {
-        return eventRecordRepository.save(eventRecord);
+    public EventRecordServiceImpl(EventRecordRepository eventRecordRepository) {
+        this.eventRecordRepository = eventRecordRepository;
     }
 
     @Override
-    public EventRecord updateEvent(Long id, EventRecord eventRecord) {
-        Optional<EventRecord> existing = eventRecordRepository.findById(id);
-        if (existing.isPresent()) {
-            EventRecord e = existing.get();
-            e.setEventCode(eventRecord.getEventCode());
-            e.setEventName(eventRecord.getEventName());
-            e.setVenue(eventRecord.getVenue());
-            e.setActive(eventRecord.isActive());
-            e.setBasePrice(eventRecord.getBasePrice());
-            return eventRecordRepository.save(e);
-        }
-        return null;
+    public EventRecord saveEvent(EventRecord event) {
+        return eventRecordRepository.save(event);
     }
 
     @Override
-    public void deleteEvent(Long id) {
-        eventRecordRepository.deleteById(id);
+    public EventRecord updateEvent(Long id, EventRecord event) {
+        EventRecord existing = eventRecordRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Event not found"));
+        existing.setEventCode(event.getEventCode());
+        existing.setEventName(event.getEventName());
+        existing.setVenue(event.getVenue());
+        existing.setActive(event.isActive());
+        existing.setBasePrice(event.getBasePrice());
+        return eventRecordRepository.save(existing);
     }
 
     @Override
-    public Optional<EventRecord> getEventById(Long id) {
-        return eventRecordRepository.findById(id);
+    public EventRecord getEventByCode(String eventCode) {
+        return eventRecordRepository.findByEventCode(eventCode)
+                .orElseThrow(() -> new RuntimeException("Event not found"));
     }
 
     @Override

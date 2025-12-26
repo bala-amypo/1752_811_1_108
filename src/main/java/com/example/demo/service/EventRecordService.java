@@ -1,23 +1,46 @@
 package com.example.demo.service;
 
 import com.example.demo.model.EventRecord;
+import com.example.demo.repository.EventRecordRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
-public interface EventRecordService {
+@Service
+public class EventRecordService {
 
-    EventRecord createEvent(EventRecord event);
+    @Autowired
+    private EventRecordRepository eventRecordRepository;
 
-    Optional<EventRecord> getEventById(Long eventId);
+    // Create or update an event
+    public EventRecord saveEvent(EventRecord eventRecord) {
+        return eventRecordRepository.save(eventRecord);
+    }
 
-    List<EventRecord> getAllEvents();
+    // Get all events
+    public List<EventRecord> getAllEvents() {
+        return eventRecordRepository.findAll();
+    }
 
-    EventRecord updateEvent(Long eventId, EventRecord updatedEvent);
+    // Get event by ID
+    public Optional<EventRecord> getEventById(Long id) {
+        return eventRecordRepository.findById(id);
+    }
 
-    void updateEventStatus(Long eventId, boolean active);
+    // Get event by code
+    public Optional<EventRecord> getEventByCode(String eventCode) {
+        return eventRecordRepository.findByEventCode(eventCode);
+    }
 
-    void deleteEvent(Long eventId);
+    // Delete event by ID
+    public void deleteEvent(Long id) {
+        eventRecordRepository.deleteById(id);
+    }
 
-    Optional<EventRecord> getEventByCode(String code);
+    // Check if eventCode exists
+    public boolean existsByEventCode(String eventCode) {
+        return eventRecordRepository.existsByEventCode(eventCode);
+    }
 }

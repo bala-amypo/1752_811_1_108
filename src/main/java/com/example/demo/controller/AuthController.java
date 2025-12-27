@@ -19,14 +19,16 @@ public class AuthController {
 
     @PostMapping("/login")
     public String login(@RequestBody User user) {
-        User existingUser = userRepository.findByEmail(user.getEmail())
-                .orElseThrow(() -> new RuntimeException("User not found"));
+
+        User existingUser = userRepository.findByEmail(user.getEmail());
+        if (existingUser == null) {
+            throw new RuntimeException("User not found");
+        }
 
         if (!existingUser.getPassword().equals(user.getPassword())) {
             throw new RuntimeException("Invalid credentials");
         }
 
-        // role is String, NOT enum → no .name()
         return jwtUtil.generateToken(existingUser.getEmail(), existingUser.getRole());
     }
 }

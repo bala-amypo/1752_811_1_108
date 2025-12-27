@@ -21,14 +21,15 @@ public class DynamicPricingEngineServiceImpl implements DynamicPricingEngineServ
     public DynamicPriceRecord computeDynamicPrice(Long eventId) {
         DynamicPriceRecord record = new DynamicPriceRecord();
         record.setEventId(eventId);
-        record.setPrice(100.0); // default price
+        record.setPrice(100.0);
         record.setComputedAt(LocalDateTime.now());
         return repository.save(record);
     }
 
     @Override
     public DynamicPriceRecord getLatestPrice(Long eventId) {
-        return repository.findTopByEventIdOrderByComputedAtDesc(eventId);
+        List<DynamicPriceRecord> list = repository.findByEventId(eventId);
+        return list.isEmpty() ? null : list.get(list.size() - 1);
     }
 
     @Override

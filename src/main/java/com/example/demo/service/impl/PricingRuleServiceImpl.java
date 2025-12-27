@@ -22,6 +22,11 @@ public class PricingRuleServiceImpl implements PricingRuleService {
     }
 
     @Override
+    public PricingRule getRuleById(Long id) {
+        return repository.findById(id).orElse(null);
+    }
+
+    @Override
     public List<PricingRule> getActiveRules() {
         return repository.findByActiveTrue();
     }

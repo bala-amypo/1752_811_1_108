@@ -5,11 +5,7 @@ import java.util.List;
 
 public interface SeatInventoryService {
 
-    SeatInventoryRecord createInventory(SeatInventoryRecord record);
-
-    SeatInventoryRecord updateRemainingSeats(Long id, Integer remaining);
+    List<SeatInventoryRecord> getAllInventories();
 
     List<SeatInventoryRecord> getInventoryByEvent(Long eventId);
-
-List<SeatInventoryRecord> getAllInventories();
 }

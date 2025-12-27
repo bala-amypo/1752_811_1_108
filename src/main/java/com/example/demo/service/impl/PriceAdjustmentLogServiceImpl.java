@@ -31,3 +31,4 @@ public class PriceAdjustmentLogServiceImpl implements PriceAdjustmentLogService 
         return repository.save(log);
     }
 }
+    

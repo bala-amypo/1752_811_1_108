@@ -17,12 +17,12 @@ public class PriceAdjustmentLogServiceImpl implements PriceAdjustmentLogService 
     }
 
     @Override
-    public PriceAdjustmentLog getAdjustmentById(Long id) {
+    public PriceAdjustmentLog getById(Long id) {
         return repository.findById(id).orElse(null);
     }
 
     @Override
-    public List<PriceAdjustmentLog> getAllAdjustments() {
+    public List<PriceAdjustmentLog> getAll() {
         return repository.findAll();
     }
 
@@ -31,4 +31,3 @@ public class PriceAdjustmentLogServiceImpl implements PriceAdjustmentLogService 
         return repository.save(log);
     }
 }
-    

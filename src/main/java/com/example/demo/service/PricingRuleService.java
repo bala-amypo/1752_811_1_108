@@ -7,5 +7,6 @@ public interface PricingRuleService {
     PricingRule createRule(PricingRule rule);
     PricingRule updateRule(Long id, PricingRule rule);
     PricingRule getRuleById(Long id);
-    List<PricingRule> getActiveRules();
+List<PricingRule> getAllRules();
+List<PricingRule> getActiveRules();
 }

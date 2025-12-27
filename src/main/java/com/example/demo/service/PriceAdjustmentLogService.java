@@ -1,13 +1,28 @@
-package com.example.demo.service;
+package com.example.demo.controller;
 
 import com.example.demo.model.PriceAdjustmentLog;
+import com.example.demo.service.PriceAdjustmentLogService;
+import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
-public interface PriceAdjustmentLogService {
+@RestController
+@RequestMapping("/api/adjustments")
+public class PriceAdjustmentLogController {
 
-    PriceAdjustmentLog logAdjustment(PriceAdjustmentLog log);
+    private final PriceAdjustmentLogService service;
 
-    List<PriceAdjustmentLog> getAllAdjustments();
+    public PriceAdjustmentLogController(PriceAdjustmentLogService service) {
+        this.service = service;
+    }
 
-    PriceAdjustmentLog getAdjustmentById(Long id);
+    @GetMapping
+    public List<PriceAdjustmentLog> getAll() {
+        return service.getAllAdjustments();
+    }
+
+    @GetMapping("/{id}")
+    public PriceAdjustmentLog getById(@PathVariable Long id) {
+        return service.getAdjustmentById(id);
+    }
 }

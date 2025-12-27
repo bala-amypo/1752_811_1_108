@@ -1,31 +1,43 @@
 package com.example.demo.service.impl;
 
-import com.example.demo.model.SeatInventoryRecord;
 import com.example.demo.model.EventRecord;
+import com.example.demo.model.SeatInventoryRecord;
+import com.example.demo.repository.EventRecordRepository;
 import com.example.demo.repository.SeatInventoryRecordRepository;
 import com.example.demo.service.SeatInventoryService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
 
 @Service
 public class SeatInventoryServiceImpl implements SeatInventoryService {
 
-    @Autowired
-    private SeatInventoryRecordRepository inventoryRepository;
+    private final SeatInventoryRecordRepository inventoryRepo;
+    private final EventRecordRepository eventRepo;
 
-    @Override
-    public SeatInventoryRecord createInventory(SeatInventoryRecord inventory) {
-        return inventoryRepository.save(inventory);
+    public SeatInventoryServiceImpl(
+            SeatInventoryRecordRepository inventoryRepo,
+            EventRecordRepository eventRepo) {
+        this.inventoryRepo = inventoryRepo;
+        this.eventRepo = eventRepo;
     }
 
-    @Override
-    public List<SeatInventoryRecord> getAllInventories() {
-        return inventoryRepository.findAll();
+    public SeatInventoryRecord createInventory(SeatInventoryRecord record) {
+        return inventoryRepo.save(record);
     }
 
-    @Override
-    public List<SeatInventoryRecord> getInventoriesByEvent(EventRecord event) {
-        return inventoryRepository.findByEvent(event);
+    public SeatInventoryRecord updateRemainingSeats(Long id, Integer remaining) {
+        SeatInventoryRecord record =
+                inventoryRepo.findById(id).orElse(null);
+        if (record != null) {
+            record.setRemainingSeats(remaining);
+            return inventoryRepo.save(record);
+        }
+        return null;
+    }
+
+    public List<SeatInventoryRecord> getInventoryByEvent(Long eventId) {
+        EventRecord event = eventRepo.findById(eventId).orElse(null);
+        return event == null ? List.of() : inventoryRepo.findByEvent(event);
     }
 }

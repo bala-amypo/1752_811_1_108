@@ -1,7 +1,8 @@
 package com.example.demo.controller;
 
 import com.example.demo.model.EventRecord;
-import com.example.demo.service.EventRecordService;
+import com.example.demo.repository.EventRecordRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -10,31 +11,37 @@ import java.util.List;
 @RequestMapping("/api/events")
 public class EventRecordController {
 
-    private final EventRecordService service;
-
-    public EventRecordController(EventRecordService service) {
-        this.service = service;
-    }
+    @Autowired
+    private EventRecordRepository repository;
 
     @PostMapping
-    public EventRecord create(@RequestBody EventRecord event) {
-        return service.create(event);
-    }
-
-    @GetMapping("/{id}")
-    public EventRecord getById(@PathVariable Long id) {
-        return service.getById(id);
+    public EventRecord createEvent(@RequestBody EventRecord event) {
+        return repository.save(event);
     }
 
     @GetMapping
-    public List<EventRecord> getAll() {
-        return service.getAll();
+    public List<EventRecord> getAllEvents() {
+        return repository.findAll();
     }
 
-    @PutMapping("/{id}/status/{active}")
-    public EventRecord updateStatus(
-            @PathVariable Long id,
-            @PathVariable boolean active) {
-        return service.updateEventStatus(id, active);
+    @GetMapping("/{id}")
+    public EventRecord getEventById(@PathVariable Long id) {
+        return repository.findById(id).orElseThrow();
+    }
+
+    @PutMapping("/{id}")
+    public EventRecord updateEvent(@PathVariable Long id, @RequestBody EventRecord event) {
+        EventRecord existing = repository.findById(id).orElseThrow();
+        existing.setEventCode(event.getEventCode());
+        existing.setEventName(event.getEventName());
+        existing.setVenue(event.getVenue());
+        existing.setActive(event.isActive());
+        existing.setBasePrice(event.getBasePrice());
+        return repository.save(existing);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteEvent(@PathVariable Long id) {
+        repository.deleteById(id);
     }
 }

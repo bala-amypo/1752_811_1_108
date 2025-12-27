@@ -36,8 +36,11 @@ public class PricingRuleServiceImpl implements PricingRuleService {
     }
 
 
-    public List<PricingRule> getAllRules() {
-    return repo.findAll();
+  @Override
+public List<PricingRule> getActiveRules() {
+    return repo.findByActiveTrue();
 }
 
 }
+
+

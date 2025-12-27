@@ -9,5 +9,5 @@ public interface PriceAdjustmentLogService {
 
     List<PriceAdjustmentLog> getAllAdjustments();
 
-    List<PriceAdjustmentLog> getAdjustmentsByEvent(Long eventId);
+    PriceAdjustmentLog getAdjustmentById(Long id);
 }

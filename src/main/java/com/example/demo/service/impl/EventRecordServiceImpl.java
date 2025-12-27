@@ -10,26 +10,26 @@ import java.util.List;
 @Service
 public class EventRecordServiceImpl implements EventRecordService {
 
-    private final EventRecordRepository repository;
+    private final EventRecordRepository repo;
 
-    public EventRecordServiceImpl(EventRecordRepository repository) {
-        this.repository = repository;
+    public EventRecordServiceImpl(EventRecordRepository repo) {
+        this.repo = repo;
     }
 
     @Override
     public EventRecord create(EventRecord event) {
-        return repository.save(event);
+        return repo.save(event);
     }
 
     @Override
     public EventRecord getById(Long id) {
-        return repository.findById(id)
+        return repo.findById(id)
                 .orElseThrow(() -> new RuntimeException("Event not found"));
     }
 
     @Override
     public List<EventRecord> getAll() {
-        return repository.findAll();
+        return repo.findAll();
     }
 
     @Override
@@ -38,13 +38,20 @@ public class EventRecordServiceImpl implements EventRecordService {
         existing.setEventCode(event.getEventCode());
         existing.setEventName(event.getEventName());
         existing.setVenue(event.getVenue());
-        existing.setActive(event.isActive());
         existing.setBasePrice(event.getBasePrice());
-        return repository.save(existing);
+        existing.setActive(event.isActive());
+        return repo.save(existing);
+    }
+
+    @Override
+    public EventRecord updateEventStatus(Long id, boolean active) {
+        EventRecord event = getById(id);
+        event.setActive(active);
+        return repo.save(event);
     }
 
     @Override
     public void delete(Long id) {
-        repository.deleteById(id);
+        repo.deleteById(id);
     }
 }

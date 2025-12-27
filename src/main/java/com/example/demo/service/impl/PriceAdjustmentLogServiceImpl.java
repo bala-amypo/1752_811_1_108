@@ -3,30 +3,33 @@ package com.example.demo.service.impl;
 import com.example.demo.model.PriceAdjustmentLog;
 import com.example.demo.repository.PriceAdjustmentLogRepository;
 import com.example.demo.service.PriceAdjustmentLogService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
-import java.util.Optional;
 
 @Service
-public class PriceAdjustmentLogServiceImpl implements PriceAdjustmentLogService {
+public class PriceAdjustmentLogServiceImpl
+        implements PriceAdjustmentLogService {
 
-    @Autowired
-    private PriceAdjustmentLogRepository logRepository;
+    private final PriceAdjustmentLogRepository repo;
 
-    @Override
-    public PriceAdjustmentLog logAdjustment(PriceAdjustmentLog log) {
-        return logRepository.save(log);
+    public PriceAdjustmentLogServiceImpl(PriceAdjustmentLogRepository repo) {
+        this.repo = repo;
     }
 
     @Override
-public List<PriceAdjustmentLog> getAdjustmentsByEvent(Long eventId) {
-    return logRepository.findByEventId(eventId);
-}
+    public PriceAdjustmentLog logAdjustment(PriceAdjustmentLog log) {
+        return repo.save(log);
+    }
 
+    @Override
+    public List<PriceAdjustmentLog> getAllAdjustments() {
+        return repo.findAll();
+    }
 
     @Override
     public PriceAdjustmentLog getAdjustmentById(Long id) {
-        return logRepository.findById(id).orElse(null);
+        return repo.findById(id)
+                .orElseThrow(() -> new RuntimeException("Adjustment not found"));
     }
 }

@@ -6,42 +6,37 @@ import com.example.demo.service.EventRecordService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class EventRecordServiceImpl implements EventRecordService {
 
-    private final EventRecordRepository eventRecordRepository;
-
     @Autowired
-    public EventRecordServiceImpl(EventRecordRepository eventRecordRepository) {
-        this.eventRecordRepository = eventRecordRepository;
-    }
+    private EventRecordRepository eventRecordRepository;
 
     @Override
-    public EventRecord saveEvent(EventRecord event) {
+    public EventRecord createEvent(EventRecord event) {
         return eventRecordRepository.save(event);
     }
 
     @Override
-    public EventRecord updateEvent(Long id, EventRecord event) {
-        EventRecord existing = eventRecordRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Event not found"));
-        existing.setEventCode(event.getEventCode());
-        existing.setEventName(event.getEventName());
-        existing.setVenue(event.getVenue());
-        existing.setActive(event.isActive());
-        existing.setBasePrice(event.getBasePrice());
-        return eventRecordRepository.save(existing);
-    }
-
-    @Override
-    public EventRecord getEventByCode(String eventCode) {
-        return eventRecordRepository.findByEventCode(eventCode)
-                .orElseThrow(() -> new RuntimeException("Event not found"));
+    public EventRecord getEventById(Long id) {
+        return eventRecordRepository.findById(id).orElse(null);
     }
 
     @Override
     public List<EventRecord> getAllEvents() {
         return eventRecordRepository.findAll();
+    }
+
+    @Override
+    public EventRecord updateEventStatus(Long id, boolean active) {
+        Optional<EventRecord> optional = eventRecordRepository.findById(id);
+        if (optional.isPresent()) {
+            EventRecord event = optional.get();
+            event.setActive(active);
+            return eventRecordRepository.save(event);
+        }
+        return null;
     }
 }

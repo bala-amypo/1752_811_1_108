@@ -1,14 +1,7 @@
 package com.example.demo.service;
 
-import com.example.demo.model.DynamicPriceRecord;
-
-import java.util.List;
+import java.math.BigDecimal;
 
 public interface DynamicPricingEngineService {
-
-    DynamicPriceRecord computeDynamicPrice(Long eventId);
-
-    List<DynamicPriceRecord> getPriceHistory(Long eventId);
-
-    List<DynamicPriceRecord> getAllComputedPrices();
+    BigDecimal getLatestPrice(Long eventId);
 }

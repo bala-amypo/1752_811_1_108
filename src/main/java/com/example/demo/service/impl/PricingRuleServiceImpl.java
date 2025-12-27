@@ -1,41 +1,43 @@
 package com.example.demo.service.impl;
 
-import com.example.demo.exception.BadRequestException;
 import com.example.demo.model.PricingRule;
 import com.example.demo.repository.PricingRuleRepository;
 import com.example.demo.service.PricingRuleService;
-
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import java.util.List;
+import java.util.Optional;
 
+@Service
 public class PricingRuleServiceImpl implements PricingRuleService {
 
-    private final PricingRuleRepository repository;
-
-    public PricingRuleServiceImpl(PricingRuleRepository repository) {
-        this.repository = repository;
-    }
+    @Autowired
+    private PricingRuleRepository pricingRuleRepository;
 
     @Override
     public PricingRule createRule(PricingRule rule) {
+        return pricingRuleRepository.save(rule);
+    }
 
-        if (rule.getPriceMultiplier() <= 0) {
-            throw new BadRequestException("Price multiplier must be > 0");
-        }
-
-        if (repository.existsByRuleCode(rule.getRuleCode())) {
-            throw new BadRequestException("Rule code already exists");
-        }
-
-        return repository.save(rule);
+    @Override
+    public PricingRule getRuleById(Long id) {
+        return pricingRuleRepository.findById(id).orElse(null);
     }
 
     @Override
     public List<PricingRule> getAllRules() {
-        return repository.findAll();
+        return pricingRuleRepository.findAll();
     }
 
     @Override
-    public List<PricingRule> getActiveRules() {
-        return repository.findByActiveTrue();
+    public PricingRule updateRule(Long id, PricingRule rule) {
+        Optional<PricingRule> optional = pricingRuleRepository.findById(id);
+        if (optional.isPresent()) {
+            PricingRule existing = optional.get();
+            existing.setRuleName(rule.getRuleName());
+            existing.setMultiplier(rule.getMultiplier());
+            return pricingRuleRepository.save(existing);
+        }
+        return null;
     }
 }

@@ -2,38 +2,46 @@ package com.example.demo.controller;
 
 import com.example.demo.model.EventRecord;
 import com.example.demo.service.EventRecordService;
-import org.springframework.beans.factory.annotation.Autowired;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
 @RestController
 @RequestMapping("/api/events")
+@Tag(name = "EventRecordController", description = "Manage Events")
 public class EventRecordController {
 
-    private final EventRecordService eventService;
+    private final EventRecordService eventRecordService;
 
-    @Autowired
-    public EventRecordController(EventRecordService eventService) {
-        this.eventService = eventService;
+    public EventRecordController(EventRecordService eventRecordService) {
+        this.eventRecordService = eventRecordService;
     }
 
     @PostMapping
-    public EventRecord createEvent(@RequestBody EventRecord event) {
-        return eventService.saveEvent(event);
+    public ResponseEntity<EventRecord> createEvent(@RequestBody EventRecord event) {
+        return ResponseEntity.ok(eventRecordService.createEvent(event));
     }
 
-    @PutMapping("/{id}")
-    public EventRecord updateEvent(@PathVariable Long id, @RequestBody EventRecord event) {
-        return eventService.updateEvent(id, event);
-    }
-
-    @GetMapping("/{eventCode}")
-    public EventRecord getEventByCode(@PathVariable String eventCode) {
-        return eventService.getEventByCode(eventCode);
+    @GetMapping("/{id}")
+    public ResponseEntity<EventRecord> getEvent(@PathVariable Long id) {
+        return ResponseEntity.ok(eventRecordService.getEventById(id));
     }
 
     @GetMapping
-    public List<EventRecord> getAllEvents() {
-        return eventService.getAllEvents();
+    public ResponseEntity<List<EventRecord>> getAllEvents() {
+        return ResponseEntity.ok(eventRecordService.getAllEvents());
+    }
+
+    @PutMapping("/{id}/status")
+    public ResponseEntity<Void> updateStatus(@PathVariable Long id, @RequestParam boolean active) {
+        eventRecordService.updateEventStatus(id, active);
+        return ResponseEntity.ok().build();
+    }
+
+    @GetMapping("/lookup/{eventCode}")
+    public ResponseEntity<EventRecord> getEventByCode(@PathVariable String eventCode) {
+        return ResponseEntity.ok(eventRecordService.getEventByCode(eventCode));
     }
 }

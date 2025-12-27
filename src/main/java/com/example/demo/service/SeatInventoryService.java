@@ -11,5 +11,5 @@ public interface SeatInventoryService {
 
     List<SeatInventoryRecord> getInventoryByEvent(Long eventId);
 
-    List<SeatInventoryRecord> getAllInventories();
+List<SeatInventoryRecord> getAllInventories();
 }

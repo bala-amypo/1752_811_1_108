@@ -28,9 +28,10 @@ public class EventRecordServiceImpl implements EventRecordService {
         return repository.findByEventCode(code);
     }
 
-    public List<EventRecord> getAllEvents() {
-        return repository.findAll();
+    public List<SeatInventoryRecord> getAllInventories() {
+    return inventoryRepo.findAll();
     }
+
 
     public EventRecord updateEventStatus(Long id, boolean active) {
         EventRecord event = getEventById(id);

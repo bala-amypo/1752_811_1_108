@@ -5,18 +5,9 @@ import java.util.List;
 
 public interface DynamicPricingEngineService {
 
-    /**
-     * Calculate and store latest dynamic price for an event
-     */
-    DynamicPriceRecord calculatePrice(Long eventId);
+    DynamicPriceRecord computeDynamicPrice(Long eventId);
 
-    /**
-     * Get latest computed price for an event
-     */
     DynamicPriceRecord getLatestPrice(Long eventId);
 
-    /**
-     * Get all computed prices
-     */
     List<DynamicPriceRecord> getAllComputedPrices();
 }

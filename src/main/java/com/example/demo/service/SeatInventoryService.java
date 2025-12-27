@@ -5,7 +5,9 @@ import java.util.List;
 
 public interface SeatInventoryService {
 
+    SeatInventoryRecord save(SeatInventoryRecord record);
+
     List<SeatInventoryRecord> getAllInventories();
 
-    List<SeatInventoryRecord> getByEventId(Long eventId);
+    List<SeatInventoryRecord> getInventoryByEvent(Long eventId);
 }

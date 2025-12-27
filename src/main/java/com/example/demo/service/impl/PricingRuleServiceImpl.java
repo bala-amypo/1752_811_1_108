@@ -10,38 +10,24 @@ import java.util.List;
 @Service
 public class PricingRuleServiceImpl implements PricingRuleService {
 
-    private final PricingRuleRepository repo;
+    private final PricingRuleRepository repository;
 
-    public PricingRuleServiceImpl(PricingRuleRepository repo) {
-        this.repo = repo;
+    public PricingRuleServiceImpl(PricingRuleRepository repository) {
+        this.repository = repository;
     }
 
-    public PricingRule createRule(PricingRule rule) {
-        return repo.save(rule);
+    @Override
+    public PricingRule save(PricingRule rule) {
+        return repository.save(rule);
     }
-
-    public PricingRule updateRule(Long id, PricingRule rule) {
-        PricingRule existing = repo.findById(id).orElse(null);
-        if (existing != null) {
-            existing.setRuleName(rule.getRuleName());
-            existing.setMultiplier(rule.getMultiplier());
-            existing.setActive(rule.isActive());
-            return repo.save(existing);
-        }
-        return null;
-    }
-
-    public PricingRule getRuleById(Long id) {
-        return repo.findById(id).orElse(null);
-    }
-
 
     @Override
     public List<PricingRule> getActiveRules() {
-        return repo.findByActiveTrue();
+        return repository.findByActiveTrue();
     }
 
-
+    @Override
+    public List<PricingRule> getAllRules() {
+        return repository.findAll();
+    }
 }
-
-

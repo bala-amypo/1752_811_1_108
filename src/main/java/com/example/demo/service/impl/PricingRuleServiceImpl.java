@@ -17,7 +17,7 @@ public class PricingRuleServiceImpl implements PricingRuleService {
     }
 
     @Override
-    public PricingRule save(PricingRule rule) {
+    public PricingRule createRule(PricingRule rule) {
         return repository.save(rule);
     }
 
@@ -27,13 +27,13 @@ public class PricingRuleServiceImpl implements PricingRuleService {
     }
 
     @Override
-    public List<PricingRule> getActiveRules() {
-        return repository.findByActiveTrue();
+    public List<PricingRule> getAllRules() {
+        return repository.findAll();
     }
 
     @Override
-    public List<PricingRule> getAllRules() {
-        return repository.findAll();
+    public List<PricingRule> getActiveRules() {
+        return repository.findByActiveTrue();
     }
 
     @Override

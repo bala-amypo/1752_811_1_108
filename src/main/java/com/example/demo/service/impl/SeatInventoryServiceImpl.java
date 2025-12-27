@@ -1,3 +1,12 @@
+package com.example.demo.service.impl;
+
+import com.example.demo.model.SeatInventoryRecord;
+import com.example.demo.repository.SeatInventoryRecordRepository;
+import com.example.demo.service.SeatInventoryService;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
 @Service
 public class SeatInventoryServiceImpl implements SeatInventoryService {
 
@@ -13,7 +22,7 @@ public class SeatInventoryServiceImpl implements SeatInventoryService {
     }
 
     @Override
-    public List<SeatInventoryRecord> getInventoryByEvent(Long eventId) {
+    public List<SeatInventoryRecord> getByEventId(Long eventId) {
         return inventoryRepo.findByEventId(eventId);
     }
 }

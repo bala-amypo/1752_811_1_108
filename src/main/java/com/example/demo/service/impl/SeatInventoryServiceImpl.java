@@ -36,8 +36,9 @@ public class SeatInventoryServiceImpl implements SeatInventoryService {
         return null;
     }
 
-    public List<SeatInventoryRecord> getInventoryByEvent(Long eventId) {
-        EventRecord event = eventRepo.findById(eventId).orElse(null);
-        return event == null ? List.of() : inventoryRepo.findByEvent(event);
-    }
+    @Override
+public List<SeatInventoryRecord> getAllInventories() {
+    return inventoryRepo.findAll();
+}
+
 }

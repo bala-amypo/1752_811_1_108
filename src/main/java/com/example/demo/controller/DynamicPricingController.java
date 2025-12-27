@@ -18,6 +18,12 @@ public class DynamicPricingController {
     public DynamicPricingController(DynamicPricingEngineService dynamicPricingEngineService) {
         this.dynamicPricingEngineService = dynamicPricingEngineService;
     }
+    @GetMapping("/latest/{eventId}")
+    public DynamicPriceRecord getLatestPrice(@PathVariable Long eventId) {
+    return dynamicPricingEngineService.computeDynamicPrice(eventId);
+    }
+
+
 
     @PostMapping("/compute/{eventId}")
     public ResponseEntity<DynamicPriceRecord> computePrice(@PathVariable Long eventId) {

@@ -1,38 +1,26 @@
 package com.example.demo.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
 public class PricingRule {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String ruleCode;
-    private int minRemainingSeats;
-    private int maxRemainingSeats;
-    private int daysBeforeEvent;
-    private double priceMultiplier;
+    private String ruleName;
+    private Double multiplier;
     private boolean active;
 
     // getters & setters
-    public String getRuleCode() { return ruleCode; }
-    public void setRuleCode(String ruleCode) { this.ruleCode = ruleCode; }
+    public Long getId() { return id; }
 
-    public int getMinRemainingSeats() { return minRemainingSeats; }
-    public void setMinRemainingSeats(int minRemainingSeats) { this.minRemainingSeats = minRemainingSeats; }
+    public String getRuleName() { return ruleName; }
+    public void setRuleName(String ruleName) { this.ruleName = ruleName; }
 
-    public int getMaxRemainingSeats() { return maxRemainingSeats; }
-    public void setMaxRemainingSeats(int maxRemainingSeats) { this.maxRemainingSeats = maxRemainingSeats; }
-
-    public int getDaysBeforeEvent() { return daysBeforeEvent; }
-    public void setDaysBeforeEvent(int daysBeforeEvent) { this.daysBeforeEvent = daysBeforeEvent; }
-
-    public double getPriceMultiplier() { return priceMultiplier; }
-    public void setPriceMultiplier(double priceMultiplier) { this.priceMultiplier = priceMultiplier; }
+    public Double getMultiplier() { return multiplier; }
+    public void setMultiplier(Double multiplier) { this.multiplier = multiplier; }
 
     public boolean isActive() { return active; }
     public void setActive(boolean active) { this.active = active; }

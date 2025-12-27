@@ -1,30 +1,42 @@
 package com.example.demo.controller;
 
 import com.example.demo.model.User;
-import com.example.demo.service.UserService;
-import io.swagger.v3.oas.annotations.tags.Tag;
+import com.example.demo.repository.UserRepository;
+import com.example.demo.security.JwtUtil;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/auth")
-@Tag(name = "AuthController", description = "Authentication Endpoints")
 public class AuthController {
 
-    private final UserService userService;
+    private final UserRepository userRepository;
+    private final JwtUtil jwtUtil;
+    private final BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
-    public AuthController(UserService userService) {
-        this.userService = userService;
+    public AuthController(UserRepository userRepository, JwtUtil jwtUtil) {
+        this.userRepository = userRepository;
+        this.jwtUtil = jwtUtil;
     }
 
     @PostMapping("/register")
-    public ResponseEntity<User> register(@RequestBody User user) {
-        return ResponseEntity.ok(userService.save(user));
+    public ResponseEntity<?> register(@RequestBody User user) {
+        if (userRepository.findByEmail(user.getEmail()) != null) {
+            return ResponseEntity.badRequest().body("Email already exists");
+        }
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        userRepository.save(user);
+        return ResponseEntity.ok("User registered");
     }
 
     @PostMapping("/login")
-    public ResponseEntity<String> login(@RequestBody User user) {
-        // Implement login logic (JWT generation)
-        return ResponseEntity.ok("Login successful");
+    public ResponseEntity<?> login(@RequestBody User user) {
+        User existingUser = userRepository.findByEmail(user.getEmail());
+        if (existingUser != null && passwordEncoder.matches(user.getPassword(), existingUser.getPassword())) {
+            String token = jwtUtil.generateToken(existingUser.getEmail(), existingUser.getRole().name());
+            return ResponseEntity.ok(token);
+        }
+        return ResponseEntity.status(401).body("Invalid credentials");
     }
 }

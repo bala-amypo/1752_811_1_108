@@ -35,4 +35,18 @@ public class PricingRuleServiceImpl implements PricingRuleService {
     public List<PricingRule> getAllRules() {
         return repository.findAll();
     }
+
+    @Override
+    public PricingRule updateRule(Long id, PricingRule updatedRule) {
+        PricingRule existing = repository.findById(id).orElse(null);
+        if (existing == null) {
+            return null;
+        }
+
+        existing.setRuleName(updatedRule.getRuleName());
+        existing.setMultiplier(updatedRule.getMultiplier());
+        existing.setActive(updatedRule.isActive());
+
+        return repository.save(existing);
+    }
 }

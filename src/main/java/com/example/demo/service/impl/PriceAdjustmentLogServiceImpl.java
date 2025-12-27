@@ -8,28 +8,26 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class PriceAdjustmentLogServiceImpl
-        implements PriceAdjustmentLogService {
+public class PriceAdjustmentLogServiceImpl implements PriceAdjustmentLogService {
 
-    private final PriceAdjustmentLogRepository repo;
+    private final PriceAdjustmentLogRepository repository;
 
-    public PriceAdjustmentLogServiceImpl(PriceAdjustmentLogRepository repo) {
-        this.repo = repo;
-    }
-
-    @Override
-    public PriceAdjustmentLog logAdjustment(PriceAdjustmentLog log) {
-        return repo.save(log);
-    }
-
-    @Override
-    public List<PriceAdjustmentLog> getAllAdjustments() {
-        return repo.findAll();
+    public PriceAdjustmentLogServiceImpl(PriceAdjustmentLogRepository repository) {
+        this.repository = repository;
     }
 
     @Override
     public PriceAdjustmentLog getAdjustmentById(Long id) {
-        return repo.findById(id)
-                .orElseThrow(() -> new RuntimeException("Adjustment not found"));
+        return repository.findById(id).orElse(null);
+    }
+
+    @Override
+    public List<PriceAdjustmentLog> getAllAdjustments() {
+        return repository.findAll();
+    }
+
+    @Override
+    public PriceAdjustmentLog save(PriceAdjustmentLog log) {
+        return repository.save(log);
     }
 }

@@ -4,8 +4,8 @@ import com.example.demo.model.EventRecord;
 import java.util.List;
 
 public interface EventRecordService {
-    EventRecord saveEvent(EventRecord event);
-    EventRecord updateEvent(Long id, EventRecord event);
-    EventRecord getEventByCode(String eventCode);
+    EventRecord createEvent(EventRecord event);
+    EventRecord getEventById(Long id);
     List<EventRecord> getAllEvents();
+    EventRecord updateEventStatus(Long id, boolean active);
 }

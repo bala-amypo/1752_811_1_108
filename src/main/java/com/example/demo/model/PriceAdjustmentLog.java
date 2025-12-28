@@ -4,23 +4,26 @@ import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
+@Table(name = "price_adjustment_logs")
 public class PriceAdjustmentLog {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private Long eventId;
     private Double oldPrice;
     private Double newPrice;
+
     private LocalDateTime changedAt;
 
     @PrePersist
     public void prePersist() {
-        changedAt = LocalDateTime.now();
+        this.changedAt = LocalDateTime.now();
     }
 
-    // getters & setters
+    public Long getId() { return id; }
+
     public Long getEventId() { return eventId; }
     public void setEventId(Long eventId) { this.eventId = eventId; }
 
@@ -31,4 +34,5 @@ public class PriceAdjustmentLog {
     public void setNewPrice(Double newPrice) { this.newPrice = newPrice; }
 
     public LocalDateTime getChangedAt() { return changedAt; }
+    public void setChangedAt(LocalDateTime changedAt) { this.changedAt = changedAt; }
 }

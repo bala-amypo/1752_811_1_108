@@ -1,27 +1,27 @@
 package com.example.demo.model;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
+@Table(name = "pricing_rules")
+@Getter
+@Setter
 public class PricingRule {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String ruleName;
-    private Double multiplier;
-    private boolean active;
+    private String ruleCode;
+    private String description;
+    private Boolean active;
 
-    // getters & setters
-    public Long getId() { return id; }
+    private Integer minRemainingSeats;
+    private Integer maxRemainingSeats;
 
-    public String getRuleName() { return ruleName; }
-    public void setRuleName(String ruleName) { this.ruleName = ruleName; }
+    private Integer daysBeforeEvent;
 
-    public Double getMultiplier() { return multiplier; }
-    public void setMultiplier(Double multiplier) { this.multiplier = multiplier; }
-
-    public boolean isActive() { return active; }
-    public void setActive(boolean active) { this.active = active; }
+    private Double priceMultiplier;
 }

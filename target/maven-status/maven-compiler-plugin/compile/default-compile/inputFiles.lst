@@ -6,10 +6,10 @@
 /home/coder/Workspace/demo/src/main/java/com/example/demo/controller/EventRecordController.java
 /home/coder/Workspace/demo/src/main/java/com/example/demo/controller/PriceAdjustmentLogController.java
 /home/coder/Workspace/demo/src/main/java/com/example/demo/controller/PricingRuleController.java
-/home/coder/Workspace/demo/src/main/java/com/example/demo/controller/SeatInventoryController.java
-/home/coder/Workspace/demo/src/main/java/com/example/demo/dto/ApiResponce.java
+/home/coder/Workspace/demo/src/main/java/com/example/demo/controller/SeatInventoryRecordController.java
+/home/coder/Workspace/demo/src/main/java/com/example/demo/dto/ApiResponse.java
 /home/coder/Workspace/demo/src/main/java/com/example/demo/dto/AuthRequest.java
-/home/coder/Workspace/demo/src/main/java/com/example/demo/dto/AuthResponce.java
+/home/coder/Workspace/demo/src/main/java/com/example/demo/dto/AuthResponse.java
 /home/coder/Workspace/demo/src/main/java/com/example/demo/exception/BadRequestException.java
 /home/coder/Workspace/demo/src/main/java/com/example/demo/model/DynamicPriceRecord.java
 /home/coder/Workspace/demo/src/main/java/com/example/demo/model/EventRecord.java

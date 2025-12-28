@@ -9,5 +9,7 @@ public interface DynamicPricingEngineService {
 
     DynamicPriceRecord getLatestPrice(Long eventId);
 
+    List<DynamicPriceRecord> getPriceHistory(Long eventId);
+
     List<DynamicPriceRecord> getAllComputedPrices();
 }

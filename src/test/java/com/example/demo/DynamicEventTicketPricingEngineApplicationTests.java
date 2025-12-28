@@ -1,4 +1,4 @@
-package com.example.demo;
+example.demo;
 
 import com.example.demo.exception.BadRequestException;
 import com.example.demo.model.*;
@@ -889,3 +889,5 @@ public class DynamicEventTicketPricingEngineApplicationTests {
         Assert.assertEquals(countHigh, 1);
     }
 }
+   
+

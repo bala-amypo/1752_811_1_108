@@ -5,9 +5,11 @@ import java.util.List;
 
 public interface SeatInventoryService {
 
-    SeatInventoryRecord save(SeatInventoryRecord record);
+    SeatInventoryRecord createInventory(SeatInventoryRecord inv);
 
+    // MUST return single object
+    SeatInventoryRecord getInventoryByEvent(long eventId);
+
+    // Optional helper if you still need list anywhere
     List<SeatInventoryRecord> getAllInventories();
-
-    List<SeatInventoryRecord> getInventoryByEvent(Long eventId);
 }

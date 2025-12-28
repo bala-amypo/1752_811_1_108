@@ -2,7 +2,10 @@ package com.example.demo.controller;
 
 import com.example.demo.model.DynamicPriceRecord;
 import com.example.demo.service.DynamicPricingEngineService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/pricing")
@@ -14,8 +17,23 @@ public class DynamicPricingController {
         this.service = service;
     }
 
-    @GetMapping("/latest/{eventId}")
-    public DynamicPriceRecord getLatestPrice(@PathVariable Long eventId) {
-        return service.computeDynamicPrice(eventId);
+    @PostMapping("/{eventId}/compute")
+    public ResponseEntity<DynamicPriceRecord> compute(@PathVariable Long eventId) {
+        return ResponseEntity.ok(service.computeDynamicPrice(eventId));
+    }
+
+    @GetMapping("/{eventId}/latest")
+    public ResponseEntity<DynamicPriceRecord> latest(@PathVariable Long eventId) {
+        return ResponseEntity.ok(service.getLatestPrice(eventId));
+    }
+
+    @GetMapping("/{eventId}/history")
+    public ResponseEntity<List<DynamicPriceRecord>> history(@PathVariable Long eventId) {
+        return ResponseEntity.ok(service.getPriceHistory(eventId));
+    }
+
+    @GetMapping("/all")
+    public ResponseEntity<List<DynamicPriceRecord>> all() {
+        return ResponseEntity.ok(service.getAllComputedPrices());
     }
 }

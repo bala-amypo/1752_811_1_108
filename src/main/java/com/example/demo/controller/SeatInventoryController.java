@@ -2,27 +2,27 @@ package com.example.demo.controller;
 
 import com.example.demo.model.SeatInventoryRecord;
 import com.example.demo.service.SeatInventoryService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @RestController
-@RequestMapping("/api/inventory")
-public class SeatInventoryController {
+@RequestMapping("/api/seat-inventory")
+public class SeatInventoryRecordController {
 
-    private final SeatInventoryService service;
+    private final SeatInventoryService seatInventoryService;
 
-    public SeatInventoryController(SeatInventoryService service) {
-        this.service = service;
+    public SeatInventoryRecordController(SeatInventoryService seatInventoryService) {
+        this.seatInventoryService = seatInventoryService;
     }
 
-    @GetMapping
-    public List<SeatInventoryRecord> getAllInventories() {
-        return service.getAllInventories();
+    @PostMapping
+    public ResponseEntity<SeatInventoryRecord> create(@RequestBody SeatInventoryRecord record) {
+        return ResponseEntity.ok(seatInventoryService.createInventory(record));
     }
 
+    // IMPORTANT — MUST RETURN SINGLE OBJECT
     @GetMapping("/event/{eventId}")
-    public List<SeatInventoryRecord> getByEvent(@PathVariable Long eventId) {
-        return service.getInventoryByEvent(eventId);
+    public ResponseEntity<SeatInventoryRecord> getByEvent(@PathVariable long eventId) {
+        return ResponseEntity.ok(seatInventoryService.getInventoryByEvent(eventId));
     }
 }

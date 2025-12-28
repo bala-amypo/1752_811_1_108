@@ -1,8 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.model.EventRecord;
-import com.example.demo.repository.EventRecordRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.example.demo.service.EventRecordService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -11,37 +10,34 @@ import java.util.List;
 @RequestMapping("/api/events")
 public class EventRecordController {
 
-    @Autowired
-    private EventRecordRepository repository;
+ private final EventRecordService eventService;
 
-    @PostMapping
-    public EventRecord createEvent(@RequestBody EventRecord event) {
-        return repository.save(event);
-    }
+ public EventRecordController(EventRecordService eventService) {
+  this.eventService = eventService;
+ }
 
-    @GetMapping
-    public List<EventRecord> getAllEvents() {
-        return repository.findAll();
-    }
+ @PostMapping
+ public EventRecord create(@RequestBody EventRecord event) {
+  return eventService.createEvent(event);
+ }
 
-    @GetMapping("/{id}")
-    public EventRecord getEventById(@PathVariable Long id) {
-        return repository.findById(id).orElseThrow();
-    }
+ @GetMapping("/{id}")
+ public EventRecord getById(@PathVariable Long id) {
+  return eventService.getEventById(id);
+ }
 
-    @PutMapping("/{id}")
-    public EventRecord updateEvent(@PathVariable Long id, @RequestBody EventRecord event) {
-        EventRecord existing = repository.findById(id).orElseThrow();
-        existing.setEventCode(event.getEventCode());
-        existing.setEventName(event.getEventName());
-        existing.setVenue(event.getVenue());
-        existing.setActive(event.isActive());
-        existing.setBasePrice(event.getBasePrice());
-        return repository.save(existing);
-    }
+ @GetMapping
+ public List<EventRecord> getAll() {
+  return eventService.getAllEvents();
+ }
 
-    @DeleteMapping("/{id}")
-    public void deleteEvent(@PathVariable Long id) {
-        repository.deleteById(id);
-    }
+ @PutMapping("/{id}/status")
+ public EventRecord updateStatus(@PathVariable Long id, @RequestParam boolean active) {
+  return eventService.updateEventStatus(id, active);
+ }
+
+ @GetMapping("/lookup/{eventCode}")
+ public EventRecord getByCode(@PathVariable String eventCode) {
+  return eventService.getEventByCode(eventCode).orElseThrow();
+ }
 }

@@ -2,7 +2,7 @@
 <testng-results ignored="0" total="60" passed="59" failed="1" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-12-28T14:12:43 UTC" name="Surefire suite" finished-at="2025-12-28T14:12:56 UTC" duration-ms="13491">
+  <suite started-at="2025-12-29T04:59:33 UTC" name="Surefire suite" finished-at="2025-12-29T04:59:46 UTC" duration-ms="13200">
     <groups>
       <group name="crud">
         <method signature="DynamicEventTicketPricingEngineApplicationTests.testCreateEventSuccess()[pri:9, instance:com.example.demo.DynamicEventTicketPricingEngineApplicationTests@618b19ad]" name="testCreateEventSuccess" class="com.example.demo.DynamicEventTicketPricingEngineApplicationTests"/>
@@ -81,13 +81,13 @@
         <method signature="DynamicEventTicketPricingEngineApplicationTests.testDynamicPricingAppliesMultiplier()[pri:30, instance:com.example.demo.DynamicEventTicketPricingEngineApplicationTests@618b19ad]" name="testDynamicPricingAppliesMultiplier" class="com.example.demo.DynamicEventTicketPricingEngineApplicationTests"/>
       </group> <!-- hibernate -->
     </groups>
-    <test started-at="2025-12-28T14:12:43 UTC" name="Surefire test" finished-at="2025-12-28T14:12:56 UTC" duration-ms="13491">
+    <test started-at="2025-12-29T04:59:33 UTC" name="Surefire test" finished-at="2025-12-29T04:59:46 UTC" duration-ms="13200">
       <class name="com.example.demo.DynamicEventTicketPricingEngineApplicationTests">
-        <test-method is-config="true" signature="setup()[pri:0, instance:com.example.demo.DynamicEventTicketPricingEngineApplicationTests@618b19ad]" started-at="2025-12-28T14:12:43 UTC" name="setup" finished-at="2025-12-28T14:12:50 UTC" duration-ms="7310" status="PASS">
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.example.demo.DynamicEventTicketPricingEngineApplicationTests@618b19ad]" started-at="2025-12-29T04:59:33 UTC" name="setup" finished-at="2025-12-29T04:59:40 UTC" duration-ms="6795" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="testServletRespondsWithHelloMessage()[pri:1, instance:com.example.demo.DynamicEventTicketPricingEngineApplicationTests@618b19ad]" started-at="2025-12-28T14:12:50 UTC" name="testServletRespondsWithHelloMessage" finished-at="2025-12-28T14:12:51 UTC" duration-ms="895" status="FAIL">
+        <test-method signature="testServletRespondsWithHelloMessage()[pri:1, instance:com.example.demo.DynamicEventTicketPricingEngineApplicationTests@618b19ad]" started-at="2025-12-29T04:59:40 UTC" name="testServletRespondsWithHelloMessage" finished-at="2025-12-29T04:59:41 UTC" duration-ms="1112" status="FAIL">
           <exception class="java.lang.AssertionError">
             <message>
               <![CDATA[expected [true] but found [false]]]>
@@ -138,239 +138,239 @@ at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testServletRespondsWithHelloMessage -->
-        <test-method signature="testServletContentTypePlainText()[pri:2, instance:com.example.demo.DynamicEventTicketPricingEngineApplicationTests@618b19ad]" started-at="2025-12-28T14:12:51 UTC" name="testServletContentTypePlainText" finished-at="2025-12-28T14:12:52 UTC" duration-ms="96" status="PASS">
+        <test-method signature="testServletContentTypePlainText()[pri:2, instance:com.example.demo.DynamicEventTicketPricingEngineApplicationTests@618b19ad]" started-at="2025-12-29T04:59:41 UTC" name="testServletContentTypePlainText" finished-at="2025-12-29T04:59:41 UTC" duration-ms="94" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testServletContentTypePlainText -->
-        <test-method signature="testServletMultipleCalls()[pri:3, instance:com.example.demo.DynamicEventTicketPricingEngineApplicationTests@618b19ad]" started-at="2025-12-28T14:12:52 UTC" name="testServletMultipleCalls" finished-at="2025-12-28T14:12:52 UTC" duration-ms="3" status="PASS">
+        <test-method signature="testServletMultipleCalls()[pri:3, instance:com.example.demo.DynamicEventTicketPricingEngineApplicationTests@618b19ad]" started-at="2025-12-29T04:59:41 UTC" name="testServletMultipleCalls" finished-at="2025-12-29T04:59:41 UTC" duration-ms="16" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testServletMultipleCalls -->
-        <test-method signature="testServletNullRequest()[pri:4, instance:com.example.demo.DynamicEventTicketPricingEngineApplicationTests@618b19ad]" started-at="2025-12-28T14:12:52 UTC" name="testServletNullRequest" finished-at="2025-12-28T14:12:52 UTC" duration-ms="2" status="PASS">
+        <test-method signature="testServletNullRequest()[pri:4, instance:com.example.demo.DynamicEventTicketPricingEngineApplicationTests@618b19ad]" started-at="2025-12-29T04:59:41 UTC" name="testServletNullRequest" finished-at="2025-12-29T04:59:41 UTC" duration-ms="77" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testServletNullRequest -->
-        <test-method signature="testServletWriterException()[pri:5, instance:com.example.demo.DynamicEventTicketPricingEngineApplicationTests@618b19ad]" started-at="2025-12-28T14:12:52 UTC" name="testServletWriterException" finished-at="2025-12-28T14:12:52 UTC" duration-ms="89" status="PASS">
+        <test-method signature="testServletWriterException()[pri:5, instance:com.example.demo.DynamicEventTicketPricingEngineApplicationTests@618b19ad]" started-at="2025-12-29T04:59:41 UTC" name="testServletWriterException" finished-at="2025-12-29T04:59:41 UTC" duration-ms="11" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testServletWriterException -->
-        <test-method signature="testServletOutputLengthPositive()[pri:6, instance:com.example.demo.DynamicEventTicketPricingEngineApplicationTests@618b19ad]" started-at="2025-12-28T14:12:52 UTC" name="testServletOutputLengthPositive" finished-at="2025-12-28T14:12:52 UTC" duration-ms="2" status="PASS">
+        <test-method signature="testServletOutputLengthPositive()[pri:6, instance:com.example.demo.DynamicEventTicketPricingEngineApplicationTests@618b19ad]" started-at="2025-12-29T04:59:41 UTC" name="testServletOutputLengthPositive" finished-at="2025-12-29T04:59:41 UTC" duration-ms="2" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testServletOutputLengthPositive -->
-        <test-method signature="testServletDeterministicOutput()[pri:7, instance:com.example.demo.DynamicEventTicketPricingEngineApplicationTests@618b19ad]" started-at="2025-12-28T14:12:52 UTC" name="testServletDeterministicOutput" finished-at="2025-12-28T14:12:52 UTC" duration-ms="2" status="PASS">
+        <test-method signature="testServletDeterministicOutput()[pri:7, instance:com.example.demo.DynamicEventTicketPricingEngineApplicationTests@618b19ad]" started-at="2025-12-29T04:59:41 UTC" name="testServletDeterministicOutput" finished-at="2025-12-29T04:59:41 UTC" duration-ms="3" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testServletDeterministicOutput -->
-        <test-method signature="testServletIsHttpServlet()[pri:8, instance:com.example.demo.DynamicEventTicketPricingEngineApplicationTests@618b19ad]" started-at="2025-12-28T14:12:52 UTC" name="testServletIsHttpServlet" finished-at="2025-12-28T14:12:52 UTC" duration-ms="0" status="PASS">
+        <test-method signature="testServletIsHttpServlet()[pri:8, instance:com.example.demo.DynamicEventTicketPricingEngineApplicationTests@618b19ad]" started-at="2025-12-29T04:59:41 UTC" name="testServletIsHttpServlet" finished-at="2025-12-29T04:59:41 UTC" duration-ms="1" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testServletIsHttpServlet -->
-        <test-method signature="testCreateEventSuccess()[pri:9, instance:com.example.demo.DynamicEventTicketPricingEngineApplicationTests@618b19ad]" started-at="2025-12-28T14:12:52 UTC" name="testCreateEventSuccess" finished-at="2025-12-28T14:12:52 UTC" duration-ms="89" status="PASS">
+        <test-method signature="testCreateEventSuccess()[pri:9, instance:com.example.demo.DynamicEventTicketPricingEngineApplicationTests@618b19ad]" started-at="2025-12-29T04:59:41 UTC" name="testCreateEventSuccess" finished-at="2025-12-29T04:59:41 UTC" duration-ms="5" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testCreateEventSuccess -->
-        <test-method signature="testCreateEventDuplicateCodeThrows()[pri:10, instance:com.example.demo.DynamicEventTicketPricingEngineApplicationTests@618b19ad]" started-at="2025-12-28T14:12:52 UTC" name="testCreateEventDuplicateCodeThrows" finished-at="2025-12-28T14:12:52 UTC" duration-ms="1" status="PASS">
+        <test-method signature="testCreateEventDuplicateCodeThrows()[pri:10, instance:com.example.demo.DynamicEventTicketPricingEngineApplicationTests@618b19ad]" started-at="2025-12-29T04:59:41 UTC" name="testCreateEventDuplicateCodeThrows" finished-at="2025-12-29T04:59:41 UTC" duration-ms="2" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testCreateEventDuplicateCodeThrows -->
-        <test-method signature="testCreateEventInvalidBasePrice()[pri:11, instance:com.example.demo.DynamicEventTicketPricingEngineApplicationTests@618b19ad]" started-at="2025-12-28T14:12:52 UTC" name="testCreateEventInvalidBasePrice" finished-at="2025-12-28T14:12:52 UTC" duration-ms="1" status="PASS">
+        <test-method signature="testCreateEventInvalidBasePrice()[pri:11, instance:com.example.demo.DynamicEventTicketPricingEngineApplicationTests@618b19ad]" started-at="2025-12-29T04:59:41 UTC" name="testCreateEventInvalidBasePrice" finished-at="2025-12-29T04:59:41 UTC" duration-ms="1" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testCreateEventInvalidBasePrice -->
-        <test-method signature="testGetEventById()[pri:12, instance:com.example.demo.DynamicEventTicketPricingEngineApplicationTests@618b19ad]" started-at="2025-12-28T14:12:52 UTC" name="testGetEventById" finished-at="2025-12-28T14:12:52 UTC" duration-ms="94" status="PASS">
+        <test-method signature="testGetEventById()[pri:12, instance:com.example.demo.DynamicEventTicketPricingEngineApplicationTests@618b19ad]" started-at="2025-12-29T04:59:41 UTC" name="testGetEventById" finished-at="2025-12-29T04:59:41 UTC" duration-ms="2" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testGetEventById -->
-        <test-method signature="testGetAllEventsEmpty()[pri:13, instance:com.example.demo.DynamicEventTicketPricingEngineApplicationTests@618b19ad]" started-at="2025-12-28T14:12:52 UTC" name="testGetAllEventsEmpty" finished-at="2025-12-28T14:12:52 UTC" duration-ms="1" status="PASS">
+        <test-method signature="testGetAllEventsEmpty()[pri:13, instance:com.example.demo.DynamicEventTicketPricingEngineApplicationTests@618b19ad]" started-at="2025-12-29T04:59:41 UTC" name="testGetAllEventsEmpty" finished-at="2025-12-29T04:59:41 UTC" duration-ms="6" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testGetAllEventsEmpty -->
-        <test-method signature="testUpdateEventStatus()[pri:14, instance:com.example.demo.DynamicEventTicketPricingEngineApplicationTests@618b19ad]" started-at="2025-12-28T14:12:52 UTC" name="testUpdateEventStatus" finished-at="2025-12-28T14:12:52 UTC" duration-ms="1" status="PASS">
+        <test-method signature="testUpdateEventStatus()[pri:14, instance:com.example.demo.DynamicEventTicketPricingEngineApplicationTests@618b19ad]" started-at="2025-12-29T04:59:41 UTC" name="testUpdateEventStatus" finished-at="2025-12-29T04:59:41 UTC" duration-ms="3" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testUpdateEventStatus -->
-        <test-method signature="testCreateSeatInventorySuccess()[pri:15, instance:com.example.demo.DynamicEventTicketPricingEngineApplicationTests@618b19ad]" started-at="2025-12-28T14:12:52 UTC" name="testCreateSeatInventorySuccess" finished-at="2025-12-28T14:12:52 UTC" duration-ms="2" status="PASS">
+        <test-method signature="testCreateSeatInventorySuccess()[pri:15, instance:com.example.demo.DynamicEventTicketPricingEngineApplicationTests@618b19ad]" started-at="2025-12-29T04:59:41 UTC" name="testCreateSeatInventorySuccess" finished-at="2025-12-29T04:59:41 UTC" duration-ms="83" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testCreateSeatInventorySuccess -->
-        <test-method signature="testCreateSeatInventoryInvalidRemainingSeats()[pri:16, instance:com.example.demo.DynamicEventTicketPricingEngineApplicationTests@618b19ad]" started-at="2025-12-28T14:12:52 UTC" name="testCreateSeatInventoryInvalidRemainingSeats" finished-at="2025-12-28T14:12:52 UTC" duration-ms="89" status="PASS">
+        <test-method signature="testCreateSeatInventoryInvalidRemainingSeats()[pri:16, instance:com.example.demo.DynamicEventTicketPricingEngineApplicationTests@618b19ad]" started-at="2025-12-29T04:59:41 UTC" name="testCreateSeatInventoryInvalidRemainingSeats" finished-at="2025-12-29T04:59:41 UTC" duration-ms="1" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testCreateSeatInventoryInvalidRemainingSeats -->
-        <test-method signature="testCreatePricingRuleSuccess()[pri:17, instance:com.example.demo.DynamicEventTicketPricingEngineApplicationTests@618b19ad]" started-at="2025-12-28T14:12:52 UTC" name="testCreatePricingRuleSuccess" finished-at="2025-12-28T14:12:52 UTC" duration-ms="2" status="PASS">
+        <test-method signature="testCreatePricingRuleSuccess()[pri:17, instance:com.example.demo.DynamicEventTicketPricingEngineApplicationTests@618b19ad]" started-at="2025-12-29T04:59:41 UTC" name="testCreatePricingRuleSuccess" finished-at="2025-12-29T04:59:41 UTC" duration-ms="9" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testCreatePricingRuleSuccess -->
-        <test-method signature="testCreatePricingRuleInvalidMultiplier()[pri:18, instance:com.example.demo.DynamicEventTicketPricingEngineApplicationTests@618b19ad]" started-at="2025-12-28T14:12:52 UTC" name="testCreatePricingRuleInvalidMultiplier" finished-at="2025-12-28T14:12:52 UTC" duration-ms="1" status="PASS">
+        <test-method signature="testCreatePricingRuleInvalidMultiplier()[pri:18, instance:com.example.demo.DynamicEventTicketPricingEngineApplicationTests@618b19ad]" started-at="2025-12-29T04:59:41 UTC" name="testCreatePricingRuleInvalidMultiplier" finished-at="2025-12-29T04:59:41 UTC" duration-ms="1" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testCreatePricingRuleInvalidMultiplier -->
-        <test-method signature="testEventRecordServiceInjected()[pri:19, instance:com.example.demo.DynamicEventTicketPricingEngineApplicationTests@618b19ad]" started-at="2025-12-28T14:12:52 UTC" name="testEventRecordServiceInjected" finished-at="2025-12-28T14:12:52 UTC" duration-ms="0" status="PASS">
+        <test-method signature="testEventRecordServiceInjected()[pri:19, instance:com.example.demo.DynamicEventTicketPricingEngineApplicationTests@618b19ad]" started-at="2025-12-29T04:59:41 UTC" name="testEventRecordServiceInjected" finished-at="2025-12-29T04:59:41 UTC" duration-ms="0" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testEventRecordServiceInjected -->
-        <test-method signature="testDynamicPricingEngineUsesRepositoriesNoInventory()[pri:20, instance:com.example.demo.DynamicEventTicketPricingEngineApplicationTests@618b19ad]" started-at="2025-12-28T14:12:52 UTC" name="testDynamicPricingEngineUsesRepositoriesNoInventory" finished-at="2025-12-28T14:12:52 UTC" duration-ms="1" status="PASS">
+        <test-method signature="testDynamicPricingEngineUsesRepositoriesNoInventory()[pri:20, instance:com.example.demo.DynamicEventTicketPricingEngineApplicationTests@618b19ad]" started-at="2025-12-29T04:59:41 UTC" name="testDynamicPricingEngineUsesRepositoriesNoInventory" finished-at="2025-12-29T04:59:41 UTC" duration-ms="3" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testDynamicPricingEngineUsesRepositoriesNoInventory -->
-        <test-method signature="testDynamicPricingEngineInactiveEvent()[pri:21, instance:com.example.demo.DynamicEventTicketPricingEngineApplicationTests@618b19ad]" started-at="2025-12-28T14:12:52 UTC" name="testDynamicPricingEngineInactiveEvent" finished-at="2025-12-28T14:12:52 UTC" duration-ms="1" status="PASS">
+        <test-method signature="testDynamicPricingEngineInactiveEvent()[pri:21, instance:com.example.demo.DynamicEventTicketPricingEngineApplicationTests@618b19ad]" started-at="2025-12-29T04:59:42 UTC" name="testDynamicPricingEngineInactiveEvent" finished-at="2025-12-29T04:59:42 UTC" duration-ms="1" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testDynamicPricingEngineInactiveEvent -->
-        <test-method signature="testCustomUserDetailsServiceRegistersUser()[pri:22, instance:com.example.demo.DynamicEventTicketPricingEngineApplicationTests@618b19ad]" started-at="2025-12-28T14:12:52 UTC" name="testCustomUserDetailsServiceRegistersUser" finished-at="2025-12-28T14:12:53 UTC" duration-ms="589" status="PASS">
+        <test-method signature="testCustomUserDetailsServiceRegistersUser()[pri:22, instance:com.example.demo.DynamicEventTicketPricingEngineApplicationTests@618b19ad]" started-at="2025-12-29T04:59:42 UTC" name="testCustomUserDetailsServiceRegistersUser" finished-at="2025-12-29T04:59:42 UTC" duration-ms="519" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testCustomUserDetailsServiceRegistersUser -->
-        <test-method signature="testCustomUserDetailsServiceLoadsUser()[pri:23, instance:com.example.demo.DynamicEventTicketPricingEngineApplicationTests@618b19ad]" started-at="2025-12-28T14:12:53 UTC" name="testCustomUserDetailsServiceLoadsUser" finished-at="2025-12-28T14:12:53 UTC" duration-ms="424" status="PASS">
+        <test-method signature="testCustomUserDetailsServiceLoadsUser()[pri:23, instance:com.example.demo.DynamicEventTicketPricingEngineApplicationTests@618b19ad]" started-at="2025-12-29T04:59:42 UTC" name="testCustomUserDetailsServiceLoadsUser" finished-at="2025-12-29T04:59:43 UTC" duration-ms="589" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testCustomUserDetailsServiceLoadsUser -->
-        <test-method signature="testLoadUnknownUserThrows()[pri:24, instance:com.example.demo.DynamicEventTicketPricingEngineApplicationTests@618b19ad]" started-at="2025-12-28T14:12:53 UTC" name="testLoadUnknownUserThrows" finished-at="2025-12-28T14:12:53 UTC" duration-ms="1" status="PASS">
+        <test-method signature="testLoadUnknownUserThrows()[pri:24, instance:com.example.demo.DynamicEventTicketPricingEngineApplicationTests@618b19ad]" started-at="2025-12-29T04:59:43 UTC" name="testLoadUnknownUserThrows" finished-at="2025-12-29T04:59:43 UTC" duration-ms="1" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testLoadUnknownUserThrows -->
-        <test-method signature="testEventRecordActiveDefaultTrue()[pri:25, instance:com.example.demo.DynamicEventTicketPricingEngineApplicationTests@618b19ad]" started-at="2025-12-28T14:12:53 UTC" name="testEventRecordActiveDefaultTrue" finished-at="2025-12-28T14:12:53 UTC" duration-ms="0" status="PASS">
+        <test-method signature="testEventRecordActiveDefaultTrue()[pri:25, instance:com.example.demo.DynamicEventTicketPricingEngineApplicationTests@618b19ad]" started-at="2025-12-29T04:59:43 UTC" name="testEventRecordActiveDefaultTrue" finished-at="2025-12-29T04:59:43 UTC" duration-ms="0" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testEventRecordActiveDefaultTrue -->
-        <test-method signature="testSeatInventoryUpdatedAtSetOnPersist()[pri:26, instance:com.example.demo.DynamicEventTicketPricingEngineApplicationTests@618b19ad]" started-at="2025-12-28T14:12:53 UTC" name="testSeatInventoryUpdatedAtSetOnPersist" finished-at="2025-12-28T14:12:53 UTC" duration-ms="0" status="PASS">
+        <test-method signature="testSeatInventoryUpdatedAtSetOnPersist()[pri:26, instance:com.example.demo.DynamicEventTicketPricingEngineApplicationTests@618b19ad]" started-at="2025-12-29T04:59:43 UTC" name="testSeatInventoryUpdatedAtSetOnPersist" finished-at="2025-12-29T04:59:43 UTC" duration-ms="0" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testSeatInventoryUpdatedAtSetOnPersist -->
-        <test-method signature="testDynamicPriceRecordComputedAtSetOnPersist()[pri:27, instance:com.example.demo.DynamicEventTicketPricingEngineApplicationTests@618b19ad]" started-at="2025-12-28T14:12:53 UTC" name="testDynamicPriceRecordComputedAtSetOnPersist" finished-at="2025-12-28T14:12:53 UTC" duration-ms="0" status="PASS">
+        <test-method signature="testDynamicPriceRecordComputedAtSetOnPersist()[pri:27, instance:com.example.demo.DynamicEventTicketPricingEngineApplicationTests@618b19ad]" started-at="2025-12-29T04:59:43 UTC" name="testDynamicPriceRecordComputedAtSetOnPersist" finished-at="2025-12-29T04:59:43 UTC" duration-ms="0" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testDynamicPriceRecordComputedAtSetOnPersist -->
-        <test-method signature="testPriceAdjustmentLogChangedAtSetOnPersist()[pri:28, instance:com.example.demo.DynamicEventTicketPricingEngineApplicationTests@618b19ad]" started-at="2025-12-28T14:12:53 UTC" name="testPriceAdjustmentLogChangedAtSetOnPersist" finished-at="2025-12-28T14:12:53 UTC" duration-ms="0" status="PASS">
+        <test-method signature="testPriceAdjustmentLogChangedAtSetOnPersist()[pri:28, instance:com.example.demo.DynamicEventTicketPricingEngineApplicationTests@618b19ad]" started-at="2025-12-29T04:59:43 UTC" name="testPriceAdjustmentLogChangedAtSetOnPersist" finished-at="2025-12-29T04:59:43 UTC" duration-ms="1" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testPriceAdjustmentLogChangedAtSetOnPersist -->
-        <test-method signature="testDynamicPricingComputeWithNoRulesUsesBasePrice()[pri:29, instance:com.example.demo.DynamicEventTicketPricingEngineApplicationTests@618b19ad]" started-at="2025-12-28T14:12:53 UTC" name="testDynamicPricingComputeWithNoRulesUsesBasePrice" finished-at="2025-12-28T14:12:53 UTC" duration-ms="3" status="PASS">
+        <test-method signature="testDynamicPricingComputeWithNoRulesUsesBasePrice()[pri:29, instance:com.example.demo.DynamicEventTicketPricingEngineApplicationTests@618b19ad]" started-at="2025-12-29T04:59:43 UTC" name="testDynamicPricingComputeWithNoRulesUsesBasePrice" finished-at="2025-12-29T04:59:43 UTC" duration-ms="6" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testDynamicPricingComputeWithNoRulesUsesBasePrice -->
-        <test-method signature="testDynamicPricingAppliesMultiplier()[pri:30, instance:com.example.demo.DynamicEventTicketPricingEngineApplicationTests@618b19ad]" started-at="2025-12-28T14:12:53 UTC" name="testDynamicPricingAppliesMultiplier" finished-at="2025-12-28T14:12:53 UTC" duration-ms="93" status="PASS">
+        <test-method signature="testDynamicPricingAppliesMultiplier()[pri:30, instance:com.example.demo.DynamicEventTicketPricingEngineApplicationTests@618b19ad]" started-at="2025-12-29T04:59:43 UTC" name="testDynamicPricingAppliesMultiplier" finished-at="2025-12-29T04:59:43 UTC" duration-ms="4" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testDynamicPricingAppliesMultiplier -->
-        <test-method signature="testSeatInventoryUsesEventIdForeignKeyStyle()[pri:31, instance:com.example.demo.DynamicEventTicketPricingEngineApplicationTests@618b19ad]" started-at="2025-12-28T14:12:53 UTC" name="testSeatInventoryUsesEventIdForeignKeyStyle" finished-at="2025-12-28T14:12:53 UTC" duration-ms="0" status="PASS">
+        <test-method signature="testSeatInventoryUsesEventIdForeignKeyStyle()[pri:31, instance:com.example.demo.DynamicEventTicketPricingEngineApplicationTests@618b19ad]" started-at="2025-12-29T04:59:43 UTC" name="testSeatInventoryUsesEventIdForeignKeyStyle" finished-at="2025-12-29T04:59:43 UTC" duration-ms="0" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testSeatInventoryUsesEventIdForeignKeyStyle -->
-        <test-method signature="testDynamicPriceRecordUsesEventIdReference()[pri:32, instance:com.example.demo.DynamicEventTicketPricingEngineApplicationTests@618b19ad]" started-at="2025-12-28T14:12:53 UTC" name="testDynamicPriceRecordUsesEventIdReference" finished-at="2025-12-28T14:12:53 UTC" duration-ms="0" status="PASS">
+        <test-method signature="testDynamicPriceRecordUsesEventIdReference()[pri:32, instance:com.example.demo.DynamicEventTicketPricingEngineApplicationTests@618b19ad]" started-at="2025-12-29T04:59:43 UTC" name="testDynamicPriceRecordUsesEventIdReference" finished-at="2025-12-29T04:59:43 UTC" duration-ms="0" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testDynamicPriceRecordUsesEventIdReference -->
-        <test-method signature="testPriceAdjustmentLogUsesEventIdReference()[pri:33, instance:com.example.demo.DynamicEventTicketPricingEngineApplicationTests@618b19ad]" started-at="2025-12-28T14:12:53 UTC" name="testPriceAdjustmentLogUsesEventIdReference" finished-at="2025-12-28T14:12:53 UTC" duration-ms="0" status="PASS">
+        <test-method signature="testPriceAdjustmentLogUsesEventIdReference()[pri:33, instance:com.example.demo.DynamicEventTicketPricingEngineApplicationTests@618b19ad]" started-at="2025-12-29T04:59:43 UTC" name="testPriceAdjustmentLogUsesEventIdReference" finished-at="2025-12-29T04:59:43 UTC" duration-ms="1" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testPriceAdjustmentLogUsesEventIdReference -->
-        <test-method signature="testSeparateInventoryPreventsPartialDependency2NF()[pri:35, instance:com.example.demo.DynamicEventTicketPricingEngineApplicationTests@618b19ad]" started-at="2025-12-28T14:12:53 UTC" name="testSeparateInventoryPreventsPartialDependency2NF" finished-at="2025-12-28T14:12:53 UTC" duration-ms="1" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- testSeparateInventoryPreventsPartialDependency2NF -->
-        <test-method signature="testEventRecordAttributesAreAtomic1NF()[pri:34, instance:com.example.demo.DynamicEventTicketPricingEngineApplicationTests@618b19ad]" started-at="2025-12-28T14:12:53 UTC" name="testEventRecordAttributesAreAtomic1NF" finished-at="2025-12-28T14:12:53 UTC" duration-ms="0" status="PASS">
+        <test-method signature="testEventRecordAttributesAreAtomic1NF()[pri:34, instance:com.example.demo.DynamicEventTicketPricingEngineApplicationTests@618b19ad]" started-at="2025-12-29T04:59:43 UTC" name="testEventRecordAttributesAreAtomic1NF" finished-at="2025-12-29T04:59:43 UTC" duration-ms="1" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testEventRecordAttributesAreAtomic1NF -->
-        <test-method signature="testSeparateDynamicPriceRemovesTransitiveDependency3NF()[pri:36, instance:com.example.demo.DynamicEventTicketPricingEngineApplicationTests@618b19ad]" started-at="2025-12-28T14:12:53 UTC" name="testSeparateDynamicPriceRemovesTransitiveDependency3NF" finished-at="2025-12-28T14:12:53 UTC" duration-ms="1" status="PASS">
+        <test-method signature="testSeparateInventoryPreventsPartialDependency2NF()[pri:35, instance:com.example.demo.DynamicEventTicketPricingEngineApplicationTests@618b19ad]" started-at="2025-12-29T04:59:43 UTC" name="testSeparateInventoryPreventsPartialDependency2NF" finished-at="2025-12-29T04:59:43 UTC" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testSeparateInventoryPreventsPartialDependency2NF -->
+        <test-method signature="testSeparateDynamicPriceRemovesTransitiveDependency3NF()[pri:36, instance:com.example.demo.DynamicEventTicketPricingEngineApplicationTests@618b19ad]" started-at="2025-12-29T04:59:43 UTC" name="testSeparateDynamicPriceRemovesTransitiveDependency3NF" finished-at="2025-12-29T04:59:43 UTC" duration-ms="0" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testSeparateDynamicPriceRemovesTransitiveDependency3NF -->
-        <test-method signature="testGetAllEventsReturnsList()[pri:37, instance:com.example.demo.DynamicEventTicketPricingEngineApplicationTests@618b19ad]" started-at="2025-12-28T14:12:53 UTC" name="testGetAllEventsReturnsList" finished-at="2025-12-28T14:12:53 UTC" duration-ms="1" status="PASS">
+        <test-method signature="testGetAllEventsReturnsList()[pri:37, instance:com.example.demo.DynamicEventTicketPricingEngineApplicationTests@618b19ad]" started-at="2025-12-29T04:59:43 UTC" name="testGetAllEventsReturnsList" finished-at="2025-12-29T04:59:43 UTC" duration-ms="1" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testGetAllEventsReturnsList -->
-        <test-method signature="testGetAllRulesReturnsList()[pri:38, instance:com.example.demo.DynamicEventTicketPricingEngineApplicationTests@618b19ad]" started-at="2025-12-28T14:12:53 UTC" name="testGetAllRulesReturnsList" finished-at="2025-12-28T14:12:53 UTC" duration-ms="0" status="PASS">
+        <test-method signature="testGetAllRulesReturnsList()[pri:38, instance:com.example.demo.DynamicEventTicketPricingEngineApplicationTests@618b19ad]" started-at="2025-12-29T04:59:43 UTC" name="testGetAllRulesReturnsList" finished-at="2025-12-29T04:59:43 UTC" duration-ms="1" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testGetAllRulesReturnsList -->
-        <test-method signature="testEventHasMultipleDynamicPricesOverTime()[pri:39, instance:com.example.demo.DynamicEventTicketPricingEngineApplicationTests@618b19ad]" started-at="2025-12-28T14:12:53 UTC" name="testEventHasMultipleDynamicPricesOverTime" finished-at="2025-12-28T14:12:53 UTC" duration-ms="1" status="PASS">
+        <test-method signature="testEventHasMultipleDynamicPricesOverTime()[pri:39, instance:com.example.demo.DynamicEventTicketPricingEngineApplicationTests@618b19ad]" started-at="2025-12-29T04:59:43 UTC" name="testEventHasMultipleDynamicPricesOverTime" finished-at="2025-12-29T04:59:43 UTC" duration-ms="1" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testEventHasMultipleDynamicPricesOverTime -->
-        <test-method signature="testEventHasMultiplePriceAdjustments()[pri:40, instance:com.example.demo.DynamicEventTicketPricingEngineApplicationTests@618b19ad]" started-at="2025-12-28T14:12:53 UTC" name="testEventHasMultiplePriceAdjustments" finished-at="2025-12-28T14:12:53 UTC" duration-ms="1" status="PASS">
+        <test-method signature="testEventHasMultiplePriceAdjustments()[pri:40, instance:com.example.demo.DynamicEventTicketPricingEngineApplicationTests@618b19ad]" started-at="2025-12-29T04:59:43 UTC" name="testEventHasMultiplePriceAdjustments" finished-at="2025-12-29T04:59:43 UTC" duration-ms="0" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testEventHasMultiplePriceAdjustments -->
-        <test-method signature="testMultipleRulesAffectSingleEvent()[pri:41, instance:com.example.demo.DynamicEventTicketPricingEngineApplicationTests@618b19ad]" started-at="2025-12-28T14:12:53 UTC" name="testMultipleRulesAffectSingleEvent" finished-at="2025-12-28T14:12:53 UTC" duration-ms="0" status="PASS">
+        <test-method signature="testMultipleRulesAffectSingleEvent()[pri:41, instance:com.example.demo.DynamicEventTicketPricingEngineApplicationTests@618b19ad]" started-at="2025-12-29T04:59:43 UTC" name="testMultipleRulesAffectSingleEvent" finished-at="2025-12-29T04:59:43 UTC" duration-ms="1" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testMultipleRulesAffectSingleEvent -->
-        <test-method signature="testComputePriceLogsAdjustmentWhenChanged()[pri:42, instance:com.example.demo.DynamicEventTicketPricingEngineApplicationTests@618b19ad]" started-at="2025-12-28T14:12:53 UTC" name="testComputePriceLogsAdjustmentWhenChanged" finished-at="2025-12-28T14:12:53 UTC" duration-ms="3" status="PASS">
+        <test-method signature="testComputePriceLogsAdjustmentWhenChanged()[pri:42, instance:com.example.demo.DynamicEventTicketPricingEngineApplicationTests@618b19ad]" started-at="2025-12-29T04:59:43 UTC" name="testComputePriceLogsAdjustmentWhenChanged" finished-at="2025-12-29T04:59:43 UTC" duration-ms="4" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testComputePriceLogsAdjustmentWhenChanged -->
-        <test-method signature="testAllComputedPricesList()[pri:43, instance:com.example.demo.DynamicEventTicketPricingEngineApplicationTests@618b19ad]" started-at="2025-12-28T14:12:53 UTC" name="testAllComputedPricesList" finished-at="2025-12-28T14:12:53 UTC" duration-ms="0" status="PASS">
+        <test-method signature="testAllComputedPricesList()[pri:43, instance:com.example.demo.DynamicEventTicketPricingEngineApplicationTests@618b19ad]" started-at="2025-12-29T04:59:43 UTC" name="testAllComputedPricesList" finished-at="2025-12-29T04:59:43 UTC" duration-ms="93" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testAllComputedPricesList -->
-        <test-method signature="testRegisterUserProducesValidToken()[pri:44, instance:com.example.demo.DynamicEventTicketPricingEngineApplicationTests@618b19ad]" started-at="2025-12-28T14:12:53 UTC" name="testRegisterUserProducesValidToken" finished-at="2025-12-28T14:12:55 UTC" duration-ms="1791" status="PASS">
+        <test-method signature="testRegisterUserProducesValidToken()[pri:44, instance:com.example.demo.DynamicEventTicketPricingEngineApplicationTests@618b19ad]" started-at="2025-12-29T04:59:43 UTC" name="testRegisterUserProducesValidToken" finished-at="2025-12-29T04:59:45 UTC" duration-ms="1815" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testRegisterUserProducesValidToken -->
-        <test-method signature="testJwtTokenContainsUsername()[pri:45, instance:com.example.demo.DynamicEventTicketPricingEngineApplicationTests@618b19ad]" started-at="2025-12-28T14:12:55 UTC" name="testJwtTokenContainsUsername" finished-at="2025-12-28T14:12:56 UTC" duration-ms="615" status="PASS">
+        <test-method signature="testJwtTokenContainsUsername()[pri:45, instance:com.example.demo.DynamicEventTicketPricingEngineApplicationTests@618b19ad]" started-at="2025-12-29T04:59:45 UTC" name="testJwtTokenContainsUsername" finished-at="2025-12-29T04:59:45 UTC" duration-ms="388" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testJwtTokenContainsUsername -->
-        <test-method signature="testJwtValidation()[pri:46, instance:com.example.demo.DynamicEventTicketPricingEngineApplicationTests@618b19ad]" started-at="2025-12-28T14:12:56 UTC" name="testJwtValidation" finished-at="2025-12-28T14:12:56 UTC" duration-ms="84" status="PASS">
+        <test-method signature="testJwtValidation()[pri:46, instance:com.example.demo.DynamicEventTicketPricingEngineApplicationTests@618b19ad]" started-at="2025-12-29T04:59:45 UTC" name="testJwtValidation" finished-at="2025-12-29T04:59:45 UTC" duration-ms="6" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testJwtValidation -->
-        <test-method signature="testJwtInvalidTokenFailsValidation()[pri:47, instance:com.example.demo.DynamicEventTicketPricingEngineApplicationTests@618b19ad]" started-at="2025-12-28T14:12:56 UTC" name="testJwtInvalidTokenFailsValidation" finished-at="2025-12-28T14:12:56 UTC" duration-ms="2" status="PASS">
+        <test-method signature="testJwtInvalidTokenFailsValidation()[pri:47, instance:com.example.demo.DynamicEventTicketPricingEngineApplicationTests@618b19ad]" started-at="2025-12-29T04:59:45 UTC" name="testJwtInvalidTokenFailsValidation" finished-at="2025-12-29T04:59:45 UTC" duration-ms="4" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testJwtInvalidTokenFailsValidation -->
-        <test-method signature="testPasswordEncoderMatches()[pri:48, instance:com.example.demo.DynamicEventTicketPricingEngineApplicationTests@618b19ad]" started-at="2025-12-28T14:12:56 UTC" name="testPasswordEncoderMatches" finished-at="2025-12-28T14:12:56 UTC" duration-ms="330" status="PASS">
+        <test-method signature="testPasswordEncoderMatches()[pri:48, instance:com.example.demo.DynamicEventTicketPricingEngineApplicationTests@618b19ad]" started-at="2025-12-29T04:59:45 UTC" name="testPasswordEncoderMatches" finished-at="2025-12-29T04:59:46 UTC" duration-ms="482" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testPasswordEncoderMatches -->
-        <test-method signature="testCustomUserDetailsServiceRoleStored()[pri:49, instance:com.example.demo.DynamicEventTicketPricingEngineApplicationTests@618b19ad]" started-at="2025-12-28T14:12:56 UTC" name="testCustomUserDetailsServiceRoleStored" finished-at="2025-12-28T14:12:56 UTC" duration-ms="175" status="PASS">
+        <test-method signature="testCustomUserDetailsServiceRoleStored()[pri:49, instance:com.example.demo.DynamicEventTicketPricingEngineApplicationTests@618b19ad]" started-at="2025-12-29T04:59:46 UTC" name="testCustomUserDetailsServiceRoleStored" finished-at="2025-12-29T04:59:46 UTC" duration-ms="129" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testCustomUserDetailsServiceRoleStored -->
-        <test-method signature="testJwtClaimsContainRoleAndUserId()[pri:50, instance:com.example.demo.DynamicEventTicketPricingEngineApplicationTests@618b19ad]" started-at="2025-12-28T14:12:56 UTC" name="testJwtClaimsContainRoleAndUserId" finished-at="2025-12-28T14:12:56 UTC" duration-ms="4" status="PASS">
+        <test-method signature="testJwtClaimsContainRoleAndUserId()[pri:50, instance:com.example.demo.DynamicEventTicketPricingEngineApplicationTests@618b19ad]" started-at="2025-12-29T04:59:46 UTC" name="testJwtClaimsContainRoleAndUserId" finished-at="2025-12-29T04:59:46 UTC" duration-ms="4" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testJwtClaimsContainRoleAndUserId -->
-        <test-method signature="testJwtTokenIsDifferentForDifferentUsers()[pri:51, instance:com.example.demo.DynamicEventTicketPricingEngineApplicationTests@618b19ad]" started-at="2025-12-28T14:12:56 UTC" name="testJwtTokenIsDifferentForDifferentUsers" finished-at="2025-12-28T14:12:56 UTC" duration-ms="3" status="PASS">
+        <test-method signature="testJwtTokenIsDifferentForDifferentUsers()[pri:51, instance:com.example.demo.DynamicEventTicketPricingEngineApplicationTests@618b19ad]" started-at="2025-12-29T04:59:46 UTC" name="testJwtTokenIsDifferentForDifferentUsers" finished-at="2025-12-29T04:59:46 UTC" duration-ms="9" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testJwtTokenIsDifferentForDifferentUsers -->
-        <test-method signature="testFindEventByCodeActsLikeHqlQuery()[pri:52, instance:com.example.demo.DynamicEventTicketPricingEngineApplicationTests@618b19ad]" started-at="2025-12-28T14:12:56 UTC" name="testFindEventByCodeActsLikeHqlQuery" finished-at="2025-12-28T14:12:56 UTC" duration-ms="1" status="PASS">
+        <test-method signature="testFindEventByCodeActsLikeHqlQuery()[pri:52, instance:com.example.demo.DynamicEventTicketPricingEngineApplicationTests@618b19ad]" started-at="2025-12-29T04:59:46 UTC" name="testFindEventByCodeActsLikeHqlQuery" finished-at="2025-12-29T04:59:46 UTC" duration-ms="1" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testFindEventByCodeActsLikeHqlQuery -->
-        <test-method signature="testGetActiveRulesActsAsQuery()[pri:53, instance:com.example.demo.DynamicEventTicketPricingEngineApplicationTests@618b19ad]" started-at="2025-12-28T14:12:56 UTC" name="testGetActiveRulesActsAsQuery" finished-at="2025-12-28T14:12:56 UTC" duration-ms="0" status="PASS">
+        <test-method signature="testGetActiveRulesActsAsQuery()[pri:53, instance:com.example.demo.DynamicEventTicketPricingEngineApplicationTests@618b19ad]" started-at="2025-12-29T04:59:46 UTC" name="testGetActiveRulesActsAsQuery" finished-at="2025-12-29T04:59:46 UTC" duration-ms="0" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testGetActiveRulesActsAsQuery -->
-        <test-method signature="testGetPriceHistoryActsAsQuery()[pri:54, instance:com.example.demo.DynamicEventTicketPricingEngineApplicationTests@618b19ad]" started-at="2025-12-28T14:12:56 UTC" name="testGetPriceHistoryActsAsQuery" finished-at="2025-12-28T14:12:56 UTC" duration-ms="0" status="PASS">
+        <test-method signature="testGetPriceHistoryActsAsQuery()[pri:54, instance:com.example.demo.DynamicEventTicketPricingEngineApplicationTests@618b19ad]" started-at="2025-12-29T04:59:46 UTC" name="testGetPriceHistoryActsAsQuery" finished-at="2025-12-29T04:59:46 UTC" duration-ms="0" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testGetPriceHistoryActsAsQuery -->
-        <test-method signature="testFindInventoryByEventIdActsAsCriteriaQuery()[pri:55, instance:com.example.demo.DynamicEventTicketPricingEngineApplicationTests@618b19ad]" started-at="2025-12-28T14:12:56 UTC" name="testFindInventoryByEventIdActsAsCriteriaQuery" finished-at="2025-12-28T14:12:56 UTC" duration-ms="1" status="PASS">
+        <test-method signature="testFindInventoryByEventIdActsAsCriteriaQuery()[pri:55, instance:com.example.demo.DynamicEventTicketPricingEngineApplicationTests@618b19ad]" started-at="2025-12-29T04:59:46 UTC" name="testFindInventoryByEventIdActsAsCriteriaQuery" finished-at="2025-12-29T04:59:46 UTC" duration-ms="1" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testFindInventoryByEventIdActsAsCriteriaQuery -->
-        <test-method signature="testFindAdjustmentsByEventIdActsAsQuery()[pri:56, instance:com.example.demo.DynamicEventTicketPricingEngineApplicationTests@618b19ad]" started-at="2025-12-28T14:12:56 UTC" name="testFindAdjustmentsByEventIdActsAsQuery" finished-at="2025-12-28T14:12:56 UTC" duration-ms="1" status="PASS">
+        <test-method signature="testFindAdjustmentsByEventIdActsAsQuery()[pri:56, instance:com.example.demo.DynamicEventTicketPricingEngineApplicationTests@618b19ad]" started-at="2025-12-29T04:59:46 UTC" name="testFindAdjustmentsByEventIdActsAsQuery" finished-at="2025-12-29T04:59:46 UTC" duration-ms="0" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testFindAdjustmentsByEventIdActsAsQuery -->
-        <test-method signature="testNoActiveRulesReturnsEmpty()[pri:57, instance:com.example.demo.DynamicEventTicketPricingEngineApplicationTests@618b19ad]" started-at="2025-12-28T14:12:56 UTC" name="testNoActiveRulesReturnsEmpty" finished-at="2025-12-28T14:12:56 UTC" duration-ms="1" status="PASS">
+        <test-method signature="testNoActiveRulesReturnsEmpty()[pri:57, instance:com.example.demo.DynamicEventTicketPricingEngineApplicationTests@618b19ad]" started-at="2025-12-29T04:59:46 UTC" name="testNoActiveRulesReturnsEmpty" finished-at="2025-12-29T04:59:46 UTC" duration-ms="0" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testNoActiveRulesReturnsEmpty -->
-        <test-method signature="testNoPriceHistoryReturnsEmpty()[pri:58, instance:com.example.demo.DynamicEventTicketPricingEngineApplicationTests@618b19ad]" started-at="2025-12-28T14:12:56 UTC" name="testNoPriceHistoryReturnsEmpty" finished-at="2025-12-28T14:12:56 UTC" duration-ms="1" status="PASS">
+        <test-method signature="testNoPriceHistoryReturnsEmpty()[pri:58, instance:com.example.demo.DynamicEventTicketPricingEngineApplicationTests@618b19ad]" started-at="2025-12-29T04:59:46 UTC" name="testNoPriceHistoryReturnsEmpty" finished-at="2025-12-29T04:59:46 UTC" duration-ms="0" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testNoPriceHistoryReturnsEmpty -->
-        <test-method signature="testOptionalEventCodeNotFound()[pri:59, instance:com.example.demo.DynamicEventTicketPricingEngineApplicationTests@618b19ad]" started-at="2025-12-28T14:12:56 UTC" name="testOptionalEventCodeNotFound" finished-at="2025-12-28T14:12:56 UTC" duration-ms="0" status="PASS">
+        <test-method signature="testOptionalEventCodeNotFound()[pri:59, instance:com.example.demo.DynamicEventTicketPricingEngineApplicationTests@618b19ad]" started-at="2025-12-29T04:59:46 UTC" name="testOptionalEventCodeNotFound" finished-at="2025-12-29T04:59:46 UTC" duration-ms="0" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testOptionalEventCodeNotFound -->
-        <test-method signature="testAdvancedFilteringByMultiplierInMemory()[pri:60, instance:com.example.demo.DynamicEventTicketPricingEngineApplicationTests@618b19ad]" started-at="2025-12-28T14:12:56 UTC" name="testAdvancedFilteringByMultiplierInMemory" finished-at="2025-12-28T14:12:56 UTC" duration-ms="2" status="PASS">
+        <test-method signature="testAdvancedFilteringByMultiplierInMemory()[pri:60, instance:com.example.demo.DynamicEventTicketPricingEngineApplicationTests@618b19ad]" started-at="2025-12-29T04:59:46 UTC" name="testAdvancedFilteringByMultiplierInMemory" finished-at="2025-12-29T04:59:46 UTC" duration-ms="74" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testAdvancedFilteringByMultiplierInMemory -->
